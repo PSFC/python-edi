@@ -13,7 +13,7 @@ setup(
     author="Jon Winsley",
     author_email="jon.winsley@gmail.com",
     license="MIT",
-    version="0.1.0",
+    version="0.1.1",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Environment :: Plugins",
