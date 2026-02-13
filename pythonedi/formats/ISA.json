@@ -1,0 +1,234 @@
+[
+    {
+        "id": "ISA",
+        "type": "segment",
+        "name": "Interchange Control Header",
+        "req": "M",
+        "max_uses": 1,
+        "notes": "",
+        "elements": [
+            {
+                "id": "ISA01",
+                "type": "element",
+                "name": "Authorization Information Qualifier",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": {
+                    "00": "(default)"
+                },
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code to identify the type of information in the Authorization Information"
+            },
+            {
+                "id": "ISA02",
+                "type": "element",
+                "name": "Authorization Information",
+                "req": "M",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 10,
+                    "max": 10
+                },
+                "notes": "Information used for additional identification or authorization of the interchange sender or the data in the interchange; the type of information is set by the Authorization Information Qualifier (I01)"
+            },
+            {
+                "id": "ISA03",
+                "type": "element",
+                "name": "Security Information Qualifier",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": {
+                    "00": "(default)"
+                },
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code to identify the type of information in the Security Information"
+            },
+            {
+                "id": "ISA04",
+                "type": "element",
+                "name": "Security Information",
+                "req": "M",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 10,
+                    "max": 10
+                },
+                "notes": "This is used for identifying the security information about the interchange sender or the data in the interchange; the type of information is set by the Security Information Qualifier (I03)"
+            },
+            {
+                "id": "ISA05",
+                "type": "element",
+                "name": "Interchange Sender ID Qualifier",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": "ID105",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Qualifier to designate the system/method of code structure used to designate the sender or receiver ID element being qualified"
+            },
+            {
+                "id": "ISA06",
+                "type": "element",
+                "name": "Interchange Sender ID",
+                "req": "M",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 15,
+                    "max": 15
+                },
+                "notes": "Identification code published by the sender for other parties to use as the receiver ID to route data to them; the sender always codes this value in the sender ID element"
+            },
+            {
+                "id": "ISA07",
+                "type": "element",
+                "name": "Interchange Receiver ID Qualifier",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": "ID105",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Qualifier to designate the system/method of code structure used to designate the sender or receiver ID element being qualified"
+            },
+            {
+                "id": "ISA08",
+                "type": "element",
+                "name": "Interchange Receiver ID",
+                "req": "M",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 15,
+                    "max": 15
+                },
+                "notes": "Identification code published by the receiver of the data; When sending, it is used by the sender as their sending ID, thus other parties sending to them will use this as a receiving ID to route data to them"
+            },
+            {
+                "id": "ISA09",
+                "type": "element",
+                "name": "Interchange Date",
+                "req": "M",
+                "data_type": "DT",
+                "data_type_ids": null,
+                "length": {
+                    "min": 6,
+                    "max": 6
+                },
+                "notes": "Date of the interchange"
+            },
+            {
+                "id": "ISA10",
+                "type": "element",
+                "name": "Interchange Time",
+                "req": "M",
+                "data_type": "TM",
+                "data_type_ids": null,
+                "length": {
+                    "min": 4,
+                    "max": 4
+                },
+                "notes": "Time of the interchange"
+            },
+            {
+                "id": "ISA11",
+                "type": "element",
+                "name": "Interchange Control Standards Identifier",
+                "req": "M",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 1
+                },
+                "notes": "Code to identify the agency responsible for the control standard used by the message that is enclosed by the interchange header and trailer"
+            },
+            {
+                "id": "ISA12",
+                "type": "element",
+                "name": "Interchange Control Version Number",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": "IDI11",
+                "length": {
+                    "min": 5,
+                    "max": 5
+                },
+                "notes": "This version number covers the interchange control segments"
+            },
+            {
+                "id": "ISA13",
+                "type": "element",
+                "name": "Interchange Control Number",
+                "req": "M",
+                "data_type": "N0",
+                "data_type_ids": null,
+                "length": {
+                    "min": 9,
+                    "max": 9
+                },
+                "notes": "A control number assigned by the interchange sender"
+            },
+            {
+                "id": "ISA14",
+                "type": "element",
+                "name": "Acknowledgment Requested",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": {
+                    "0": "Requested"
+                },
+                "length": {
+                    "min": 1,
+                    "max": 1
+                },
+                "notes": "Code sent by the sender to request an interchange acknowledgment (TA1)"
+            },
+            {
+                "id": "ISA15",
+                "type": "element",
+                "name": "Usage Indicator",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": {
+                    "T": "Test",
+                    "P": "Production",
+                    "I": "Information"
+                },
+                "length": {
+                    "min": 1,
+                    "max": 1
+                },
+                "notes": "Code to indicate whether data enclosed by this interchange envelope is test, production or information"
+            },
+            {
+                "id": "ISA16",
+                "type": "element",
+                "name": "Component Element Separator",
+                "req": "M",
+                "data_type": "",
+                "data_type_ids": {
+                    "T": "Test",
+                    "P": "Production",
+                    "I": "Information"
+                },
+                "length": {
+                    "min": 1,
+                    "max": 1
+                },
+                "notes": "Type is not applicable; the component element separator is a delimiter and not a data element; this field provides the delimiter used to separate component data elements within a composite data structure; this value must be different than the data element separator and the segment terminator"
+            }
+        ]
+    }
+ ]

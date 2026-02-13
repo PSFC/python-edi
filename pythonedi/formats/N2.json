@@ -1,0 +1,29 @@
+[
+   {   
+	   "id": "N2", "type": "segment",
+        "name": "Additional Name Information",
+        "req": "O",
+        "max_uses": 2,
+        "notes": "To specify additional names or those longer than 35 characters in length",
+        "elements": [
+            {   "id": "N201", "type": "element",
+                "name": "Name",
+                "req": "M",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length":
+                	{"min": 1, "max": 60},
+                "notes": "Free-form name"
+            },
+            {   "id": "N202", "type": "element",
+                "name": "Name",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length":
+                	{"min": 1, "max": 60},
+                "notes": "Free-form name"
+            }
+        ]
+    }
+]

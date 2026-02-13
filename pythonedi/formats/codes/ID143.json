@@ -1,0 +1,8 @@
+{
+	"810": "Invoice",
+	"812": "Credit/Debit Adjustment",
+    "850": "Purchase Order",
+    "855": "Purchase Order Acknowledgment",
+    "856": "Ship Notice/Manifest",
+    "997": "Functional Acknowledgment"
+}

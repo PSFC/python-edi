@@ -1,0 +1,65 @@
+[
+    {
+        "id": "FOB",
+        "type": "segment",
+        "name": "F.O.B. Related Instructions",
+        "req": "O",
+        "max_uses": -1,
+        "notes": "To specify transportation instructions relating to shipment",
+		"syntax": [
+            {"rule": "IFATLEASTONE", "criteria": [3, 2]},
+            {"rule": "IFATLEASTONE", "criteria": [4, 5]},
+            {"rule": "IFATLEASTONE", "criteria": [7, 6]},
+            {"rule": "IFATLEASTONE", "criteria": [8, 9]}
+        ],
+        "elements": [
+            {
+                "id": "FOB01",
+                "type": "element",
+                "name": "Shipment Method of Payment",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": {
+                    "CC": "Collect",
+                    "PB": "Customer Pick-up/Backhaul",
+                    "PP": "Prepaid (by Seller)",
+                    "PU": "Pickup"
+                },
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code identifying the Reference Identification"
+            },
+            {
+                "id": "FOB02",
+                "type": "element",
+                "name": "Location Qualifier",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": {
+                    "DE": "Destination (Shipping)",
+                    "OR": "Origin (Shipping Point)"
+                },
+                "length": {
+                    "min": 1,
+                    "max": 2
+                },
+                "notes": "Code identifying type of location"
+            },
+            {
+                "id": "FOB03",
+                "type": "element",
+                "name": "Description",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 80
+                },
+                "notes": "A free-form description to clarify the related data elements and their content"
+            }
+        ]
+    }
+]

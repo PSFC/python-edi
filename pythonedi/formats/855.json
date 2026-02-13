@@ -1,0 +1,379 @@
+[
+    {
+        "id": "ISA", "type": "placeholder"
+	},
+    {
+        "id": "GS", "type": "placeholder"
+	},
+    {
+		"id": "ST", "type": "placeholder"
+    },
+    {
+        "id": "BAK",
+        "type": "segment",
+        "name": "Beginning Segment for Purchase Order Acknowledgment",
+        "req": "M",
+        "max_uses": 1,
+        "notes": "",
+        "elements": [
+            {
+                "id": "BAK01",
+                "type": "element",
+                "name": "Transaction Set Purpose Code",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": "ID353",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code identifying purpose of transaction set"
+            },
+            {
+                "id": "BAK02",
+                "type": "element",
+                "name": "Acknowledgment Type",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": "ID587",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code specifying the type of acknowledgment"
+            },
+            {
+                "id": "BAK03",
+                "type": "element",
+                "name": "Purchase Order Number",
+                "req": "M",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 22
+                },
+                "notes": "Identifying number for Purchase Order assigned by the orderer/purchaser"
+            },
+            {
+                "id": "BAK04",
+                "type": "element",
+                "name": "Date",
+                "req": "M",
+                "data_type": "DT",
+                "data_type_ids": null,
+                "length": {
+                    "min": 8,
+                    "max": 8
+                },
+                "notes": "(BAK04 is the date assigned by the purchaser to purchase order.) Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"
+            },
+            {
+                "id": "BAK05",
+                "type": "element",
+                "name": "Release Number",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 30
+                },
+                "notes": "Number identifying a release against a Purchase Order previously placed by the parties involved in the transaction"
+            },
+            {
+                "id": "BAK06",
+                "type": "element",
+                "name": "Request Reference Number",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 45
+                },
+                "notes": "UNFI defined contract number"
+            },
+            {
+                "id": "BAK07",
+                "type": "element",
+                "name": "Contract Number",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 30
+                },
+                "notes": "Contract number"
+            },
+            {
+                "id": "BAK08",
+                "type": "element",
+                "name": "Reference Identification",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 80
+                },
+                "notes": "(Seller's Order Number) Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"
+            },
+            {
+                "id": "BAK09",
+                "type": "element",
+                "name": "Date",
+                "req": "M",
+                "data_type": "DT",
+                "data_type_ids": null,
+                "length": {
+                    "min": 8,
+                    "max": 8
+                },
+                "notes": "(BAK09 is the date assigned by the sender to the acknowledgment.) Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"
+            },
+            {
+                "id": "BAK10",
+                "type": "element",
+                "name": "Transaction Type Code",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID640",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code specifying the type of transaction"
+            }
+        ]
+    },
+    {
+		"id": "DTM", "type": "placeholder"
+    },
+    {
+        "id": "TD5",
+        "type": "segment",
+        "name": "Carrier Details (Routing Sequence/Transit Time)",
+        "req": "O",
+        "max_uses": 12,
+        "notes": "To specify the carrier and sequence of routing and provide transit time information",
+		"syntax": [
+            {"rule": "ATLEASTONE", "criteria": [2, 4, 5, 6, 12]},
+            {"rule": "IFATLEASTONE", "criteria": [2, 3]},
+            {"rule": "IFATLEASTONE", "criteria": [7, 8]},
+            {"rule": "IFATLEASTONE", "criteria": [10, 11]},
+            {"rule": "IFATLEASTONE", "criteria": [13, 12]},
+            {"rule": "IFATLEASTONE", "criteria": [14, 13]},
+            {"rule": "IFATLEASTONE", "criteria": [15, 12]}
+        ],
+        "elements": [
+            {
+                "id": "TD501",
+                "type": "element",
+                "name": "Routing Sequence Code",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID133",
+                "length": {
+                    "min": 1,
+                    "max": 2
+                },
+                "notes": "Code describing the relationship of a carrier to a specific shipment movement"
+            },
+            {
+                "id": "TD502",
+                "type": "element",
+                "name": "Identification Code Qualifier",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID66",
+                "length": {
+                    "min": 1,
+                    "max": 2
+                },
+                "notes": "Code designating the system/method of code structure used for Identification Code"
+            },
+            {
+                "id": "TD503",
+                "type": "element",
+                "name": "Identification Code",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 2,
+                    "max": 80
+                },
+                "notes": "Code identifying a party or other code"
+            },
+            {
+                "id": "TD504",
+                "type": "element",
+                "name": "Transportation Method/Type Code",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID91",
+                "length": {
+                    "min": 1,
+                    "max": 2
+                },
+                "notes": "Code specifying the method or type of transportation for the shipment"
+            }
+        ]
+    },
+    {
+        "id": "L_N9",
+        "type": "loop",
+        "name": "Reference Identification Loop",
+        "req": "O",
+        "repeat": 1000,
+        "segments": [
+            {
+                "id": "N9", "type": "placeholder",
+				"req": "M"
+            },
+            {
+				"id": "DTM", "type": "placeholder",
+				"max_uses": -1
+            },
+            {
+                "id": "N4", "type": "placeholder",
+                "req": "O"
+			},
+		    {
+				"id": "MSG", "type": "placeholder",
+				"max_uses": 1000
+		    }
+         ]
+    },
+	{
+	    "id": "L_N1",
+	    "type": "loop",
+	    "name": "Name Loop",
+	    "req": "O",
+	    "repeat": 200,
+	    "segments": [
+	        {
+	            "id": "N1", "type": "placeholder"
+	        },
+	        {
+				"id": "N3", "type": "placeholder",
+	            "req": "O"
+	        },
+	        {
+	            "id": "N4", "type": "placeholder",
+	            "req": "O"
+			},
+		    {
+				"id": "PER", "type": "placeholder"
+		    }
+	     ]
+	},
+	{
+	    "id": "L_PO1",
+	    "type": "loop",
+	    "name": "Loop Baseline Item Data",
+	    "req": "O",
+	    "repeat": 100000,
+	    "segments": [
+			{
+	            "id": "PO1", "type": "placeholder"
+	        },
+			{
+	            "id": "PO3", "type": "placeholder"
+	        },
+	        {
+				"id": "L_PID", "type": "placeholder"
+	        },
+			{
+	            "id": "PO4", "type": "placeholder"
+	        },
+	        {
+	            "id": "L_SAC", "type": "placeholder"
+	        },
+			{
+			    "id": "CTP",  "type": "placeholder",
+				"req": "O",
+				"max_uses": -1
+			},
+			{
+	            "id": "SDQ", "type": "placeholder"
+	        },
+			{
+			    "id": "L_ACK",
+				"type": "loop",
+				"name": "Loop Line Item Acknowledgment",
+				"req": "O",
+				"repeat": 104,
+				"segments": [
+					{
+					     "id": "ACK",
+					     "type": "segment",
+					     "name": "Line Item Acknowledgment",
+					     "req": "M",
+					     "max_uses": 1,
+					     "notes": "To acknowledge the ordered quantities and specify the ready date for a specific line item",
+					     "elements": [
+							{
+							    "id": "ACK01",
+							    "name": "Line Item Status Code",
+							    "type": "element",
+							    "req": "M",
+							    "data_type": "ID",
+							    "data_type_ids": "ID668",
+							    "length": {
+							        "min": 2,
+							        "max": 2
+							    },
+							    "notes": "Code specifying the action taken by the seller on a line item requested by the buyer"
+							},
+							{
+								"id": "ACK02",
+								"name": "Quantity",
+								"type": "element",
+								"req": "O",
+								"data_type": "C",
+								"data_type_ids": null,
+								"length": {
+								    "min": 1,
+								    "max": 15
+								},
+								"notes": "Numeric value of quantity"
+							},
+							{
+							    "id": "ACK03",
+							    "name": "Unit or Basis for Measurement Code",
+							    "type": "element",
+							    "req": "C",
+							    "data_type": "ID",
+							    "data_type_ids": "ID355",
+							    "length": {
+							        "min": 2,
+							        "max": 2
+							    },
+							    "notes": "Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"
+							}
+						]
+					},
+					{
+						"id": "DTM", "type": "placeholder",
+						"max_uses": -1
+					}
+				]
+			}
+	    ]
+	},	
+    {
+		"id": "L_CTT", "type": "placeholder"
+	},
+    {
+        "id": "SE", "type": "placeholder"
+    },
+    {
+        "id": "GE", "type": "placeholder"
+    },
+    {
+        "id": "IEA", "type": "placeholder"
+	}
+]

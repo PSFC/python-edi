@@ -1,0 +1,94 @@
+[
+    {
+        "id": "CTT",
+        "type": "segment",
+        "name": "Transaction Totals",
+        "req": "M",
+        "max_uses": 1,
+        "notes": "To transmit a hash total for a specific element in the transaction set",
+        "syntax": [
+    		{"rule": "ALLORNONE", "criteria": [3, 4]},
+    		{"rule": "ALLORNONE", "criteria": [5, 6]}
+        ],
+        "elements": [
+            {
+                "id": "CTT01",
+                "name": "Number of Line Items",
+                "type": "element",
+                "req": "M",
+                "data_type": "N0",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 6
+                },
+                "notes": "Total number of line items in the transaction set"
+            },
+            {
+                "id": "CTT02",
+                "name": "Hash Total",
+                "type": "element",
+                "req": "O",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 10
+                },
+                "notes": "Sum of values of the specified data element. All values in the data element will be summed without regard to decimal points (explicit or implicit) or signs. Truncation will occur on the left most digits if the sum is greater than the maximum size of the hash total of the data element. Example: -.0018 First occurrence of value being hashed. .18 Second occurrence of value being hashed. 1.8 Third occurrence of value being hashed. 18.01 Fourth occurrence of value being hashed. 18E2 Fifth occurrence of value being hashed. -------- 1873 Hash Total"
+            },
+            {
+                "id": "CTT03",
+                "name": "Weight",
+                "type": "element",
+                "req": "O",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 10
+                },
+                "notes": "Numeric value of weight"
+            },
+            {
+                "id": "CTT04",
+                "name": "Unit or Basis for Measurement Code",
+                "type": "element",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID355",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"
+            },
+            {
+                "id": "CTT05",
+                "name": "Volume",
+                "type": "element",
+                "req": "O",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 8
+                },
+                "notes": "Value of volumetric measure"
+            },
+            {
+                "id": "CTT06",
+                "name": "Unit or Basis for Measurement Code",
+                "type": "element",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID355",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"
+            }
+        ]
+    }	
+]

@@ -1,0 +1,311 @@
+[
+     {
+        "id": "SDQ",
+        "type": "segment",
+        "name": "Destination Quantity",
+        "req": "O",
+        "max_uses": 200,
+        "notes": "To specify destination and quantity detail",
+        "elements": [
+            {
+                "id": "SDQ01",
+                "type": "element",
+                "name": "Unit or Basis for Measurement Code",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": "ID355",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"
+            },
+            {
+                "id": "SDQ02",
+                "type": "element",
+                "name": "Identification Code Qualifier",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID66",
+                "length": {
+                    "min": 1,
+                    "max": 2
+                },
+                "notes": "Code specifying the system/method of code structure used for Identification Code (67)"
+            },
+            {
+                "id": "SDQ03",
+                "type": "element",
+                "name": "Identification Code",
+                "req": "M",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 2,
+                    "max": 80
+                },
+                "notes": "Code identifying a party or other code"
+            },
+            {
+                "id": "SDQ04",
+                "type": "element",
+                "name": "Quantity",
+                "req": "M",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 15
+                },
+                "notes": "Numeric value of quantity"
+            },
+            {
+                "id": "SDQ05",
+                "type": "element",
+                "name": "Identification Code",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 2,
+                    "max": 80
+                },
+                "notes": "Code identifying a party or other code"
+            },
+            {
+                "id": "SDQ06",
+                "type": "element",
+                "name": "Quantity",
+                "req": "O",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 15
+                },
+                "notes": "Numeric value of quantity"
+            },
+            {
+                "id": "SDQ07",
+                "type": "element",
+                "name": "Identification Code",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 2,
+                    "max": 80
+                },
+                "notes": "Code identifying a party or other code"
+            },
+            {
+                "id": "SDQ08",
+                "type": "element",
+                "name": "Quantity",
+                "req": "O",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 15
+                },
+                "notes": "Numeric value of quantity"
+            },
+            {
+                "id": "SDQ09",
+                "type": "element",
+                "name": "Identification Code",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 2,
+                    "max": 80
+                },
+                "notes": "Code identifying a party or other code"
+            },
+            {
+                "id": "SDQ10",
+                "type": "element",
+                "name": "Quantity",
+                "req": "O",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 15
+                },
+                "notes": "Numeric value of quantity"
+            },
+            {
+                "id": "SDQ11",
+                "type": "element",
+                "name": "Identification Code",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 2,
+                    "max": 80
+                },
+                "notes": "Code identifying a party or other code"
+            },
+            {
+                "id": "SDQ12",
+                "type": "element",
+                "name": "Quantity",
+                "req": "O",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 15
+                },
+                "notes": "Numeric value of quantity"
+            },
+            {
+                "id": "SDQ13",
+                "type": "element",
+                "name": "Identification Code",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 2,
+                    "max": 80
+                },
+                "notes": "Code identifying a party or other code"
+            },
+            {
+                "id": "SDQ14",
+                "type": "element",
+                "name": "Quantity",
+                "req": "O",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 15
+                },
+                "notes": "Numeric value of quantity"
+            },
+            {
+                "id": "SDQ15",
+                "type": "element",
+                "name": "Identification Code",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 2,
+                    "max": 80
+                },
+                "notes": "Code identifying a party or other code"
+            },
+            {
+                "id": "SDQ16",
+                "type": "element",
+                "name": "Quantity",
+                "req": "O",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 15
+                },
+                "notes": "Numeric value of quantity"
+            },
+            {
+                "id": "SDQ17",
+                "type": "element",
+                "name": "Identification Code",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 2,
+                    "max": 80
+                },
+                "notes": "Code identifying a party or other code"
+            },
+            {
+                "id": "SDQ18",
+                "type": "element",
+                "name": "Quantity",
+                "req": "O",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 15
+                },
+                "notes": "Numeric value of quantity"
+            },
+            {
+                "id": "SDQ19",
+                "type": "element",
+                "name": "Identification Code",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 2,
+                    "max": 80
+                },
+                "notes": "Code identifying a party or other code"
+            },
+            {
+                "id": "SDQ20",
+                "type": "element",
+                "name": "Quantity",
+                "req": "O",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 15
+                },
+                "notes": "Numeric value of quantity"
+            },
+            {
+                "id": "SDQ21",
+                "type": "element",
+                "name": "Identification Code",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 2,
+                    "max": 80
+                },
+                "notes": "Code identifying a party or other code"
+            },
+            {
+                "id": "SDQ22",
+                "type": "element",
+                "name": "Quantity",
+                "req": "O",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 15
+                },
+                "notes": "Numeric value of quantity"
+            },
+            {
+                "id": "SDQ23",
+                "type": "element",
+                "name": "Location Identifier",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 30
+                },
+                "notes": "Code which identifies a specific location"
+            }
+        ]
+    }
+]

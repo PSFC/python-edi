@@ -1,0 +1,517 @@
+[
+    {
+        "id": "ISA", "type": "placeholder"
+	},
+    {
+        "id": "GS", "type": "placeholder"
+	},
+    {
+		"id": "ST", "type": "placeholder"
+    },
+    {
+        "id": "AK1",
+        "type": "segment",
+        "name": "Functional Group Response Header",
+        "req": "M",
+        "max_uses": 1,
+        "notes": "",
+        "elements": [
+            {
+               "id": "AK101",
+                "type": "element",
+                "name": "Functional Identifier Code",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": "ID479",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code identifying a group of application related transaction sets"
+			},
+			{
+                "id": "AK102",
+                "type": "element",
+                "name": "Group Control Number",
+                "req": "M",
+                "data_type": "N0",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 9
+                },
+                "notes": "Assigned number originated and maintained by the sender"
+            }
+		]
+	},
+    {
+        "id": "L_AK2",
+        "type": "loop",
+        "name": "Loop Transaction Set Response Header",
+        "req": "O",
+        "repeat": 999999,
+		"segments": [
+            {
+                "id": "AK2",
+		        "type": "segment",
+		        "name": "Transaction Set Header",
+		        "req": "M",
+		        "max_uses": 1,
+		        "notes": "To indicate the start of a transaction set and to assign a control number",
+		        "elements": [
+		            {
+		                "id": "AK201",
+		                "type": "element",
+		                "name": "Transaction Set Identifier Code",
+		                "req": "M",
+		                "data_type": "ID",
+		                "data_type_ids": "ID143",
+		                "length": {
+		                    "min": 3,
+		                    "max": 3
+		                },
+		                "notes": "Code identifying a Transaction Set"
+		            },
+		            {
+		                "id": "AK202",
+		                "type": "element",
+		                "name": "Transaction Set Control Number",
+		                "req": "M",
+		                "data_type": "AN",
+		                "data_type_ids": null,
+		                "length": {
+		                    "min": 4,
+		                    "max": 9
+		                },
+		                "notes": "Identifying control number that must be unique within the transaction set functional group assigned by the originator for a transaction set"
+		            }
+		        ]
+            },
+            {
+				"id": "L_AK3",
+				"type": "loop",
+                "req": "O",
+        		"repeat": 999999,
+        		"segments": [
+					{
+		                "id": "AK3",
+				        "type": "segment",
+				        "name": "Data Segment Note",
+				        "req": "M",
+				        "max_uses": 1,
+				        "notes": "To report errors in a data segment and identify the location of the data segment",
+				        "elements": [
+				            {
+				                "id": "AK301",
+				                "type": "element",
+				                "name": "Segment ID Code",
+				                "req": "M",
+				                "data_type": "ID",
+				                "data_type_ids": null,
+				                "length": {
+				                    "min": 2,
+				                    "max": 3
+				                },
+				                "notes": "Code defining the segment ID of the data segment in error (See Appendix A - Number 77)"
+				            },
+				            {
+				                "id": "AK302",
+				                "type": "element",
+				                "name": "Segment Position in Transaction Set",
+				                "req": "M",
+				                "data_type": "N0",
+				                "data_type_ids": null,
+				                "length": {
+				                    "min": 1,
+				                    "max": 6
+				                },
+				                "notes": "The numerical count position of this data segment from the start of the transaction set: the transaction set header is count position 1"
+				            },
+				            {
+				                "id": "AK303",
+				                "type": "element",
+				                "name": "Loop Identifier Code",
+				                "req": "O",
+				                "data_type": "AN",
+				                "data_type_ids": null,
+				                "length": {
+				                    "min": 1,
+				                    "max": 6
+				                },
+				                "notes": "The loop ID number given on the transaction set diagram is the value for this data element in segments LS and LE"
+				            },
+				            {
+				                "id": "AK304",
+				                "type": "element",
+				                "name": "Segment Syntax Error Code",
+				                "req": "O",
+				                "data_type": "ID",
+				                "data_type_ids": {
+									"1": "Unrecognized segment ID",
+									"2": "Unexpected segment",
+									"3": "Mandatory segment missing",
+									"4": "Loop Occurs Over Maximum Times",
+									"5": "Segment Exceeds Maximum Use",
+									"6": "Segment Not in Defined Transaction Set",
+									"7": "Segment Not in Proper Sequence",
+									"8": "Segment Has Data Element Errors"
+				                },
+				                "length": {
+				                    "min": 1,
+				                    "max": 3
+				                },
+				                "notes": "Code indicating error found based on the syntax editing of a segment"
+				            }
+						]
+					},
+					{
+						"id": "AK4",
+				        "type": "segment",
+				        "name": "Data Element Note",
+				        "req": "O",
+				        "max_uses": 99,
+				        "notes": "To report errors in a data element or composite data structure and identify the location of the data element",
+				        "elements": [
+				            {
+				                "id": "AK401",
+				                "type": "composite",
+				                "name": "Position in Segment",
+				                "req": "M",
+				                "notes": "Code indicating the relative position of the simple data element or composite data structure in error within a segment, count beginning with 1 for the position immediately following the segment ID; additionally indicating the relative position of a repeating structure in error, count beginning with 1 for the position immediately following the preceding element separator; additionally indicating the relative position of a component of a composite data structure in error, count beginning with 1 for the position following the preceding element or repetition separator",
+								"elements": [
+						            {
+						                "id": "AK401-01",
+						                "type": "element",
+						                "name": "Element Position in Segment",
+						                "req": "M",
+						                "data_type": "N0",
+						                "data_type_ids": null,
+						                "length": {
+						                    "min": 1,
+						                    "max": 2
+						                },
+						                "notes": "This is used to indicate the relative position of a simple data element, or the relative position of a composite data structure with the relative position of the component within the composite data structure, in error; in the data segment the count starts with 1 for the simple data element or composite data structure immediately following the segment ID"
+						            },
+						            {
+						                "id": "AK401-02",
+						                "type": "element",
+						                "name": "Component Data Element Position in Composite",
+						                "req": "O",
+						                "data_type": "N0",
+						                "data_type_ids": null,
+						                "length": {
+						                    "min": 1,
+						                    "max": 2
+						                },
+						                "notes": "This is used to indicate the relative position of a simple data element, or the relative position of a composite data structure with the relative position of the component within the composite data structure, in error; in the data segment the count starts with 1 for the simple data element or composite data structure immediately following the segment ID"
+						            },
+						            {
+						                "id": "AK401-03",
+						                "type": "element",
+						                "name": "Repeating Data Element Position",
+						                "req": "O",
+						                "data_type": "N0",
+						                "data_type_ids": null,
+						                "length": {
+						                    "min": 1,
+						                    "max": 4
+						                },
+						                "notes": "To identify the specific repetition of a data element that is in error"
+						            }
+								]
+				            },
+				            {
+				                "id": "AK402",
+				                "type": "element",
+				                "name": "Data Element Reference Number",
+				                "req": "O",
+				                "data_type": "N0",
+				                "data_type_ids": null,
+				                "length": {
+				                    "min": 1,
+				                    "max": 4
+				                },
+				                "notes": "Reference number used to locate the data element in the Data Element Dictionary"
+							},
+				            {
+				                "id": "AK403",
+				                "type": "element",
+				                "name": "Data Element Syntax Error Code",
+				                "req": "M",
+				                "data_type": "ID",
+				                "data_type_ids": {
+				                    "1": "Mandatory data element missing",
+				                    "2": "Conditional required data element missing.",
+				                    "3": "Too many data elements.",
+				                    "4": "Data element too short.",
+				                    "5": "Data element too long.",
+				                    "6": "Invalid character in data element.",
+				                    "7": "Invalid code value.",
+				                    "8": "Invalid Date",
+				                    "9": "Invalid Time",
+				                    "10": "Exclusion Condition Violated"								},
+				                "length": {
+				                    "min": 1,
+				                    "max": 3
+				                },
+				                "notes": "Code indicating the error found after syntax edits of a data element"
+							},
+				            {
+				                "id": "AK404",
+				                "type": "element",
+				                "name": "Copy of Bad Data Element",
+				                "req": "O",
+				                "data_type": "AN",
+				                "data_type_ids": null,
+				                "length": {
+				                    "min": 1,
+				                    "max": 99
+				                },
+				                "notes": "This is a copy of the data element in error"
+							}
+						]
+					}
+				]
+            },
+		    {
+				"id": "AK5",
+				"type": "segment",
+				"name": "Transaction Set Response Trailer",
+		        "req": "M",
+		        "max_uses": 1,
+		        "notes": "To acknowledge acceptance or rejection and report errors in a transaction set",
+		        "elements": [
+					{
+		                "id": "AK501",
+		                "type": "element",
+		                "name": "Transaction Set Acknowledgment Code",
+		                "req": "M",
+		                "data_type": "ID",
+		                "data_type_ids": {
+		                    "A": "Accepted",
+		                    "E": "Accepted But Errors Were Noted",
+		                    "M": "Rejected, Message Authentication Code (MAC) Failed",
+		                    "R": "Rejected",
+		                    "W": "Rejected, Assurance Failed Validity Tests",
+		                    "X": "Rejected, Content After Decryption Could Not Be Analyzed"
+						},
+		                "length": {
+		                    "min": 1,
+		                    "max": 1
+		                },
+		                "notes": "Code indicating accept or reject condition based on the syntax editing of the transaction set"
+		            },
+					{
+		                "id": "AK502",
+		                "type": "element",
+		                "name": "Transaction Set Syntax Error Code",
+		                "req": "O",
+		                "data_type": "ID",
+		                "data_type_ids": "ID718",
+		                "length": {
+		                    "min": 1,
+		                    "max": 3
+		                },
+		                "notes": "Code indicating error found based on the syntax editing of a transaction set"
+		            },
+					{
+		                "id": "AK503",
+		                "type": "element",
+		                "name": "Transaction Set Syntax Error Code",
+		                "req": "O",
+		                "data_type": "ID",
+		                "data_type_ids": "ID718",
+		                "length": {
+		                    "min": 1,
+		                    "max": 3
+		                },
+		                "notes": "Code indicating error found based on the syntax editing of a transaction set"
+		            },
+					{
+		                "id": "AK504",
+		                "type": "element",
+		                "name": "Transaction Set Syntax Error Code",
+		                "req": "O",
+		                "data_type": "ID",
+		                "data_type_ids": "ID718",
+		                "length": {
+		                    "min": 1,
+		                    "max": 3
+		                },
+		                "notes": "Code indicating error found based on the syntax editing of a transaction set"
+		            },
+					{
+		                "id": "AK505",
+		                "type": "element",
+		                "name": "Transaction Set Syntax Error Code",
+		                "req": "O",
+		                "data_type": "ID",
+		                "data_type_ids": "ID718",
+		                "length": {
+		                    "min": 1,
+		                    "max": 3
+		                },
+		                "notes": "Code indicating error found based on the syntax editing of a transaction set"
+		            },
+					{
+		                "id": "AK506",
+		                "type": "element",
+		                "name": "Transaction Set Syntax Error Code",
+		                "req": "O",
+		                "data_type": "ID",
+		                "data_type_ids": "ID718",
+		                "length": {
+		                    "min": 1,
+		                    "max": 3
+		                },
+		                "notes": "Code indicating error found based on the syntax editing of a transaction set"
+		            }
+				]
+			}
+		]
+    },
+    {
+		"id": "AK9",
+		"type": "segment",
+		"name": "Functional Group Response Trailer",
+        "req": "M",
+        "max_uses": 1,
+        "notes": "To acknowledge acceptance or rejection of a functional group and report the number of included transaction sets from the original trailer, the accepted sets, and the received sets in this functional group",
+        "elements": [
+			{
+                "id": "AK901",
+                "type": "element",
+                "name": "Functional Group Acknowledge Code",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": {
+                    "A": "Accepted",
+                    "E": "Accepted, But Errors Were Noted.",
+                    "M": "Rejected, Message Authentication Code (MAC) Failed",
+                    "P": "Partially Accepted, At Least One Transaction Set Was Rejected",
+                    "R": "Rejected",
+                    "W": "Rejected, Assurance Failed Validity Tests",
+                    "X": "Rejected, Content After Decryption Could Not Be Analyzed"
+				},
+                "length": {
+                    "min": 1,
+                    "max": 1
+                },
+                "notes": "Code indicating accept or reject condition based on the syntax editing of the functional group"
+            },
+            {
+                "id": "AK902",
+                "type": "element",
+                "name": "Number of Transaction Sets Included",
+                "req": "M",
+                "data_type": "N0",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 6
+                },
+                "notes": "Total number of transaction sets included in the functional group or interchange (transmission) group terminated by the trailer containing this data element"
+            },
+            {
+                "id": "AK903",
+                "type": "element",
+                "name": "Number of Received Transaction Sets",
+                "req": "M",
+                "data_type": "N0",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 6
+                },
+                "notes": "Number of Transaction Sets received"
+            },
+            {
+                "id": "AK904",
+                "type": "element",
+                "name": "Number of Accepted Transaction Sets",
+                "req": "M",
+                "data_type": "N0",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 6
+                },
+                "notes": "Number of accepted Transaction Sets in a Functional Group"
+            },
+			{
+                "id": "AK905",
+                "type": "element",
+                "name": "Functional Group Syntax Error Code",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID716",
+                "length": {
+                    "min": 1,
+                    "max": 3
+                },
+                "notes": "Code indicating error found based on the syntax editing of the functional group header and/or trailer"
+            },
+			{
+                "id": "AK906",
+                "type": "element",
+                "name": "Functional Group Syntax Error Code",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID716",
+                "length": {
+                    "min": 1,
+                    "max": 3
+                },
+                "notes": "Code indicating error found based on the syntax editing of the functional group header and/or trailer"
+            },
+			{
+                "id": "AK907",
+                "type": "element",
+                "name": "Functional Group Syntax Error Code",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID716",
+                "length": {
+                    "min": 1,
+                    "max": 3
+                },
+                "notes": "Code indicating error found based on the syntax editing of the functional group header and/or trailer"
+            },
+			{
+                "id": "AK908",
+                "type": "element",
+                "name": "Functional Group Syntax Error Code",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID716",
+                "length": {
+                    "min": 1,
+                    "max": 3
+                },
+                "notes": "Code indicating error found based on the syntax editing of the functional group header and/or trailer"
+            },
+			{
+                "id": "AK909",
+                "type": "element",
+                "name": "Functional Group Syntax Error Code",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID716",
+                "length": {
+                    "min": 1,
+                    "max": 3
+                },
+                "notes": "Code indicating error found based on the syntax editing of the functional group header and/or trailer"
+            }
+		]
+    },
+    {
+        "id": "SE", "type": "placeholder"
+    },
+    {
+        "id": "GE", "type": "placeholder"
+    },
+    {
+        "id": "IEA", "type": "placeholder"
+	}
+]

@@ -1,0 +1,121 @@
+[
+    {
+        "id": "PO3",
+        "type": "segment",
+        "name": "Additional Item Detail",
+        "req": "O",
+        "max_uses": 25,
+        "notes": "To specify additional item-related data involving variations in normal price/quantity structure",
+        "syntax": [
+    		{"rule": "IFATLEASTONE", "criteria": [4, 3, 5]}
+        ],
+        "elements": [
+			{
+                "id": "PO301",
+                "name": "Change Reason Code",
+                "type": "element",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": {
+                    "AQ": "Alternate Quantity and Unit of Measure"
+                },
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code specifying the reason for price or quantity change"
+			},
+            {
+                "id": "PO302",
+                "type": "element",
+                "name": "PO302",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 1
+                },
+                "notes": "PO302"
+            },
+			{
+                "id": "PO303",
+                "name": "Price Identifier Code",
+                "type": "element",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID236",
+                "length": {
+                    "min": 3,
+                    "max": 3
+                },
+                "notes": "Code identifying pricing specification"
+			},
+			{
+                "id": "PO304",
+                "name": "Unit Price",
+                "type": "element",
+                "req": "O",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 17
+                },
+                "notes": "Price per unit of product, service, commodity, etc."
+			},
+            {
+                "id": "PO305",
+                "type": "element",
+                "name": "PO305",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 1
+                },
+                "notes": "PO305"
+            },
+			{
+                "id": "PO306",
+                "name": "Quantity",
+                "type": "element",
+                "req": "M",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 15
+                },
+                "notes": "Numeric value of quantity"
+			},
+			{
+                "id": "PO307",
+                "name": "Unit or Basis for Measurement Code",
+                "type": "element",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": "ID355",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"
+			},
+            {
+                "id": "PO308",
+                "name": "Description",
+                "type": "element",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 80
+                },
+                "notes": "A free-form description to clarify the related data elements and their content"
+            }
+		]
+	}
+ ]

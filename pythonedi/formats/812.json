@@ -1,0 +1,368 @@
+[
+	{
+        "id": "ISA", "type": "placeholder"
+	},
+    {
+        "id": "GS", "type": "placeholder"
+	},
+    {
+		"id": "ST", "type": "placeholder"
+    },
+    {
+        "id": "BCD",
+        "type": "segment",
+        "name": "Beginning Credit/Debit Adjustment",
+        "req": "M",
+        "max_uses": 1,
+        "notes": "To transmit identifying dates and numbers for the transaction set and indicate the monetary value to the receiver of the transaction",
+ 		"syntax": [
+            {"rule": "ATLEASTONE", "criteria": [7, 10, 14]},
+            {"rule": "ALLORNONE", "criteria": [13, 14]}
+        ],
+		"elements": [
+            {
+                "id": "BCD01",
+                "type": "element",
+                "name": "Date",
+                "req": "M",
+                "data_type": "DT",
+                "data_type_ids": null,
+                "length": {
+                    "min": 8,
+                    "max": 8
+                },
+                "notes": "Date expressed as CCYYMMDD (BCD01 is the credit/debit adjustment date.)"
+            },
+            {
+                "id": "BCD02",
+                "type": "element",
+                "name": "Credit/Debit Adjustment Number",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 22
+                },
+                "notes": "Number assigned by issuer of a credit or debit memo"
+            },
+			{
+                "id": "BCD03",
+                "type": "element",
+                "name": "Transaction Handling Code",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": "ID305",
+                "length": {
+                    "min": 1,
+                    "max": 2
+                },
+                "notes": "Code designating the action to be taken by all parties"
+			},
+            {   "id": "BCD04", "type": "element",
+                "name": "Amount",
+                "req": "M",
+                "data_type": "N2",
+                "data_type_ids": null,
+                "length": {"min": 1, "max": 15},
+                "notes": "Monetary amount (BCD04 is the net amount of this complete transaction.)"
+            },
+			{
+                "id": "BCD05",
+                "type": "element",
+                "name": "Credit/Debit Flag Code",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": "ID478",
+                "length": {
+                    "min": 1,
+                    "max": 1
+                },
+                "notes": "Code indicating whether amount is a credit or debit"
+			},
+            {
+                "id": "BCD06",
+                "type": "element",
+                "name": "Date",
+                "req": "O",
+                "data_type": "DT",
+                "data_type_ids": null,
+                "length": {
+                    "min": 8,
+                    "max": 8
+                },
+                "notes": "Date expressed as CCYYMMDD (BCD06 is the invoice date.)"
+            },
+            {
+                "id": "BCD07",
+                "type": "element",
+                "name": "Invoice Number",
+                "req": "C",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 22
+                },
+                "notes": "Identifying number assigned by issuer"
+            },
+            {
+                "id": "BCD08",
+                "type": "element",
+                "name": "Vendor Order Number",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 22
+                },
+                "notes": "Number assigned by a vendor referencing a particular customer purchase order"
+            },
+            {
+                "id": "BCD09",
+                "type": "element",
+                "name": "Date",
+                "req": "O",
+                "data_type": "DT",
+                "data_type_ids": null,
+                "length": {
+                    "min": 8,
+                    "max": 8
+                },
+                "notes": "Date expressed as CCYYMMDD (BCD09 is the purchase order date.)"
+            },
+            {
+                "id": "BCD10",
+                "type": "element",
+                "name": "Purchase Order Number",
+                "req": "C",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 22
+                },
+                "notes": "Identifying number for Purchase Order assigned by the orderer/purchaser"
+            }
+        ]
+    },
+    {
+		"id": "N9", "type": "placeholder"
+    },
+    {
+		"id": "L_N1",
+    	"type": "loop",
+        "name": "Name Loop",
+        "req": "O",
+        "repeat": 200,
+        "segments": [
+            {
+                "id": "N1", "type": "placeholder"
+            }
+        ]
+    },
+    {
+		"id": "L_CDD",
+    	"type": "loop",
+        "name": "Loop Credit/Debit Adjustment Detail",
+        "req": "O",
+        "repeat": -1,
+        "segments": [
+            {
+                "id": "CDD",
+                "type": "segment",
+		        "name": "Credit/Debit Adjustment Detail",
+		        "req": "O",
+		        "max_uses": 1,
+		        "notes": "To provide information relative to a line item adjustment",
+		 		"syntax": [
+		            {"rule": "ATLEASTONE", "criteria": [4, 7]},
+		            {"rule": "IFATLEASTONE", "criteria": [7, 11]},
+		            {"rule": "ALLORNONE", "criteria": [7, 8]},
+		            {"rule": "ALLORNONE", "criteria": [10, 11]},
+		            {"rule": "ALLORNONE", "criteria": [12, 13]}
+		        ],
+				"elements": [
+					{
+		                "id": "CDD01",
+		                "type": "element",
+		                "name": "Adjustment Reason Code",
+		                "req": "M",
+		                "data_type": "ID",
+		                "data_type_ids": "ID426",
+		                "length": {
+		                    "min": 2,
+		                    "max": 2
+		                },
+		                "notes": "Code indicating reason for debit or credit memo or adjustment to invoice, debit or credit memo, or payment"
+					},
+					{
+		                "id": "CDD02",
+		                "type": "element",
+		                "name": "Credit/Debit Flag Code",
+		                "req": "M",
+		                "data_type": "ID",
+		                "data_type_ids": "ID478",
+		                "length": {
+		                    "min": 1,
+		                    "max": 1
+		                },
+		                "notes": "Code indicating whether amount is a credit or debit"
+					},
+		            {
+		                "id": "CDD03",
+		                "type": "element",
+		                "name": "Assigned Identification",
+		                "req": "O",
+		                "data_type": "AN",
+		                "data_type_ids": null,
+		                "length": {
+		                    "min": 1,
+		                    "max": 20
+		                },
+		                "notes": "Alphanumeric characters assigned for differentiation within a transaction set"
+		            },
+		            {   "id": "CDD04",
+		            	"type": "element",
+		                "name": "Amount",
+		                "req": "C",
+		                "data_type": "N2",
+		                "data_type_ids": null,
+		                "length": {"min": 1, "max": 15},
+		                "notes": "Monetary amount"
+		            },
+					{
+		                "id": "CDD05",
+		                "type": "element",
+		                "name": "Yes/No Condition or Response Code",
+		                "req": "O",
+		                "data_type": "ID",
+		                "data_type_ids": "ID1073",
+		                "length": {
+		                    "min": 1,
+		                    "max": 1
+		                },
+		                "notes": "Code indicating a Yes or No condition or response (CDD05 is the code indicating whether adjustment is for returned goods. A 'Y' confirms that the adjustment is for returned goods.)"
+					},
+		            {
+		                "id": "CDD06",
+		                "type": "element",
+		                "name": "Price Bracket Identifier",
+		                "req": "O",
+		                "data_type": "AN",
+		                "data_type_ids": null,
+		                "length": {
+		                    "min": 1,
+		                    "max": 3
+		                },
+		                "notes": "Identifier assigned by the vendor for a specific price bracket"
+		            },
+		            {
+                        "id": "CDD07",
+                        "name": "Credit/Debit Quantity",
+                        "type": "element",
+                        "req": "C",
+                        "data_type": "R",
+                        "data_type_ids": null,
+                        "length": {
+                            "min": 1,
+                            "max": 10
+                        },
+                        "notes": "Number of supplier units credited or debited"
+                    },
+					{
+		                "id": "CDD08",
+		                "type": "element",
+		                "name": "Unit or Basis for Measurement Code",
+		                "req": "C",
+		                "data_type": "ID",
+		                "data_type_ids": "ID355",
+		                "length": {
+		                    "min": 2,
+		                    "max": 2
+		                },
+		                "notes": "Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"
+					},
+		            {
+                        "id": "CDD09",
+                        "name": "Unit Price Difference",
+                        "type": "element",
+                        "req": "O",
+                        "data_type": "R",
+                        "data_type_ids": null,
+                        "length": {
+                            "min": 1,
+                            "max": 15
+                        },
+                        "notes": "Per unit (case) price or allowance/charge difference between original billing and corrected amount (may be unit full list price or allowance/charge where item was not on original billing or where full credit/debit amount is being transacted, i.e., returns or contested quantities)"
+                    },
+					{
+		                "id": "CDD10",
+		                "type": "element",
+		                "name": "Price Identifier Code",
+		                "req": "C",
+		                "data_type": "ID",
+		                "data_type_ids": "ID236",
+		                "length": {
+		                    "min": 3,
+		                    "max": 3
+		                },
+		                "notes": "Code identifying pricing specification"
+					},
+		            {
+                        "id": "CDD11",
+                        "name": "Unit Price",
+                        "type": "element",
+                        "req": "C",
+                        "data_type": "R",
+                        "data_type_ids": null,
+                        "length": {
+                            "min": 1,
+                            "max": 17
+                        },
+                        "notes": "Price per unit of product, service, commodity, etc."
+                    },
+					{
+		                "id": "CDD12",
+		                "type": "element",
+		                "name": "Price Identifier Code",
+		                "req": "C",
+		                "data_type": "ID",
+		                "data_type_ids": "ID236",
+		                "length": {
+		                    "min": 3,
+		                    "max": 3
+		                },
+		                "notes": "Code identifying pricing specification"
+					},
+		            {
+                        "id": "CDD13",
+                        "name": "Unit Price",
+                        "type": "element",
+                        "req": "C",
+                        "data_type": "R",
+                        "data_type_ids": null,
+                        "length": {
+                            "min": 1,
+                            "max": 17
+                        },
+                        "notes": "Price per unit of product, service, commodity, etc."
+                    }
+				]
+            },
+            {
+                "id": "LIN", "type": "placeholder"
+            }
+        ]
+    },    
+    {
+        "id": "SE", "type": "placeholder"
+    },
+    {
+        "id": "GE", "type": "placeholder"
+    },
+    {
+        "id": "IEA", "type": "placeholder"
+	}
+]

@@ -1,0 +1,88 @@
+[
+    {   
+		"id": "PID", "type": "segment",
+        "name": "Product/Item Description",
+        "req": "O",
+        "max_uses": 1,
+        "notes": "To describe a product or process in coded or free-form format",
+		"syntax": [
+			{"rule": "IFATLEASTONE", "criteria": [4, 3]},
+			{"rule": "ATLEASTONE", "criteria": [4, 5]},
+			{"rule": "IFATLEASTONE", "criteria": [7, 3]},
+			{"rule": "IFATLEASTONE", "criteria": [8, 4]},
+			{"rule": "IFATLEASTONE", "criteria": [9, 5]}
+		],
+		"elements": [
+			{
+				"id": "PID01", "type": "element",
+				"name": "Item Description Type",
+				"req": "M",
+				"data_type": "ID",
+				"data_type_ids": "ID349",
+				"length": {
+					"min": 1, "max": 1},
+				"notes": "Code indicating the format of a description"
+			},
+			{   
+				"id": "PID02", "type": "element",
+				"name": "Product/Process Characteristic Code",
+				"req": "O",
+				"data_type": "ID",
+				"data_type_ids": "ID750",
+				"length": {
+					"min": 2, "max": 3},
+				"notes": "Code identifying the general class of a product or process characteristic"
+			},
+			{   
+				"id": "PID03", "type": "element",
+				"name": "Association Qualifier Code",
+				"req": "O",
+				"data_type": "ID",
+				"data_type_ids": "ID559",
+				"length": {
+					"min": 2, "max": 2},
+				"notes": "Code identifying the agency assigning the code values"
+			},
+			{   
+				"id": "PID04", "type": "element",
+				"name": "Product Description Code",
+				"req": "O",
+				"data_type": "AN",
+				"data_type_ids": null,
+				"length": {
+					"min": 1, "max": 12},
+				"notes": "A code from an industry code list which provides specific data about a product characteristic"
+			},
+			{   
+				"id": "PID05", "type": "element",
+				"name": "Description",
+				"req": "O",
+				"data_type": "AN",
+				"data_type_ids": null,
+				"length": {
+					"min": 1, "max": 80},
+				"notes": "A free-form description to clarify the related data elements and their content"
+			},
+			{   
+				"id": "PID06", "type": "element",
+				"name": "Surface/Layer/Position Code",
+				"req": "O",
+				"data_type": "ID",
+				"data_type_ids": "ID752",
+				"length": {
+					"min": 2, "max": 2},
+				"notes": "Code indicating the product surface, layer or position that is being described"
+			},
+			{   
+				"id": "PID07", "type": "element",
+				"name": "Source Subqualifier",
+				"req": "O",
+				"data_type": "AN",
+				"data_type_ids": null,
+				"length": {
+					"min": 1, "max": 15},
+				"notes": "A reference that indicates the table or text maintained by the Source Qualifier"
+			}
+		]
+    }
+]

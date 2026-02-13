@@ -1,0 +1,15 @@
+[
+	{
+		"id": "L_PID",
+		"type": "loop",
+		"name": "Loop Product/Item Description",
+		"req": "O",
+		"repeat": 1000,
+		"segments": [
+		    {   
+				"id": "PID", "type": "placeholder",
+		        "req": "M"
+		    }
+		]
+	}
+]

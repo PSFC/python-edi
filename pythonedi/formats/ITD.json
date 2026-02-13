@@ -1,0 +1,151 @@
+[
+    {
+        "id": "ITD",
+        "type": "segment",
+        "name": "Terms of Sale/Deferred Terms of Sale",
+        "req": "O",
+        "max_uses": -1,
+        "notes": "To specify terms of sale",
+		"syntax": [
+            {"rule": "IFATLEASTONE", "criteria": [3, 4, 5, 13]},
+            {"rule": "IFATLEASTONE", "criteria": [8, 4, 5, 13]},
+            {"rule": "IFATLEASTONE", "criteria": [9, 10, 11]}
+        ],
+        "elements": [
+            {
+				"id": "ITD01", "type": "element",
+                "name": "Terms Type Code",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID336",
+                "length": {"min": 2, "max": 2},
+                "notes": "Code identifying type of payment terms"
+            },
+            {
+				"id": "ITD02", "type": "element",
+                "name": "Terms Basis Date Code",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": {"3": "Invoice Date"},
+                "length": {"min": 1, "max": 2},
+                "notes": "Code identifying the beginning of the terms period"
+            },
+            {
+				"id": "ITD03", "type": "element",
+                "name": "Terms Discount %",
+                "req": "O",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {"min": 1, "max": 6},
+                "notes": "Available to hospital if invoice is paid on or before Terms Discount Due Date"
+            },
+            {
+				"id": "ITD04", "type": "element",
+                "name": "Terms Discount Due Date",
+                "req": "O",
+                "data_type": "DT",
+                "data_type_ids": null,
+                "length": {"min": 8, "max": 8},
+                "notes": "Date payment is due if discount is to be earned (CCYYMMDD)"
+            },
+            {
+				"id": "ITD05", "type": "element",
+                "name": "Terms Discount Days Due",
+                "req": "O",
+                "data_type": "N0",
+                "data_type_ids": null,
+                "length": {"min": 1, "max": 3},
+                "notes": "Maximum number of days to pass before payment is due"
+            },
+            {
+				"id": "ITD06", "type": "element",
+                "name": "Terms Net Due Date",
+                "req": "O",
+                "data_type": "DT",
+                "data_type_ids": null,
+                "length": {"min": 8, "max": 8},
+                "notes": "Date when total invoice amount is due"
+            },
+            {
+				"id": "ITD07", "type": "element",
+                "name": "Terms Net Days",
+                "req": "O",
+                "data_type": "N0",
+                "data_type_ids": null,
+                "length": {"min": 1, "max": 3},
+                "notes": "Payment terms in net days"
+            },
+            {   "id": "ITD08", "type": "element",
+                "name": "Terms Discount Amount",
+                "req": "O",
+                "data_type": "N2",
+                "data_type_ids": null,
+                "length": {"min": 1, "max": 10},
+                "notes": "Total amount of terms discount"
+            },
+            {
+				"id": "ITD09", "type": "element",
+                "name": "Terms Deferred Due Date",
+                "req": "O",
+                "data_type": "DT",
+                "data_type_ids": null,
+                "length": {"min": 8, "max": 8},
+                "notes": "Date deferred payment or percent of invoice payable is due"
+            },
+            {
+				"id": "ITD10", "type": "element",
+                "name": "Deferred Amount Due",
+                "req": "O",
+                "data_type": "N2",
+                "data_type_ids": null,
+                "length": {"min": 1, "max": 10},
+                "notes": "Deferred amount due for payment"
+            },
+            {
+				"id": "ITD11", "type": "element",
+                "name": "% Invoice Payable",
+                "req": "O",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {"min": 1, "max": 5},
+                "notes": "Amount of invoice payable expressed in percent"
+            },
+            {
+				"id": "ITD12", "type": "element",
+                "name": "Description",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {"min": 1, "max": 80},
+                "notes": "Description of terms"
+            },
+            {
+				"id": "ITD13", "type": "element",
+                "name": "Day of Month",
+                "req": "C",
+                "data_type": "N0",
+                "data_type_ids": null,
+                "length": {"min": 1, "max": 2},
+                "notes": "The numeric value of the day of the month between 1 and the maximum day of the month being referenced"
+            },
+            {
+				"id": "ITD14", "type": "element",
+                "name": "Payment Method Code",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID107",
+                "length": {"min": 1, "max": 2},
+                "notes": "Code identifying type of payment procedures"
+            },
+            {
+				"id": "ITD15", "type": "element",
+                "name": "Percentage as Decimal",
+                "req": "O",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {"min": 1, "max": 10},
+                "notes": "Percentage expressed as a decimal (e.g., 0.0 through 1.0 represents 0% through 100%)"
+            }
+         ]
+    }
+]

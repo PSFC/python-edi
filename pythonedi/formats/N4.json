@@ -1,0 +1,63 @@
+[
+	{
+	    "id": "N4",
+	    "type": "segment",
+	    "name": "Geographic Location",
+	    "req": "M",
+	    "max_uses": -1,
+	    "notes": "To specify the geographic place of the named party",
+		"syntax": [
+	        {"rule": "IFATLEASTONE", "criteria": [6, 5]}
+	    ],
+	    "elements": [
+	        {
+	            "id": "N401",
+	            "name": "City Name",
+	            "type": "element",
+	            "req": "O",
+	            "data_type": "AN",
+	            "data_type_ids": null,
+	            "length": {
+	                "min": 2,
+	                "max": 30
+	            },
+	            "notes": "Free-form text for city name"
+	        },
+	        {
+	            "id": "N402",
+	            "name": "State or Province Code",
+	            "type": "element",
+	            "req": "O",
+	            "data_type": "ID",
+	            "data_type_ids": null,
+	            "length": {
+	                "min": 2,
+	                "max": 2
+	            },
+	            "notes": "Code (Standard State/Province) as defined by appropriate government agency"
+	        },
+	        {
+	            "id": "N403",
+	            "name": "Postal Code",
+	            "type": "element",
+	            "req": "O",
+	            "data_type": "ID",
+	            "data_type_ids": null,
+	            "length": {
+	                "min": 3,
+	                "max": 15
+	            },
+	            "notes": "Code defining international postal zone code excluding punctuation and blanks (zip code for United States)"
+	        },
+			{
+				"id": "N404", "type": "element",
+				"name": "Country Code",
+				"req": "O",
+				"data_type": "ID",
+				"data_type_ids": "ID26",
+				"length": {"min": 2, "max": 3},
+				"notes": "Code identifying the country"
+			}
+		]
+	}
+]

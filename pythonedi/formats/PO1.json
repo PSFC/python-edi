@@ -1,0 +1,351 @@
+[
+    {
+        "id": "PO1",
+        "type": "segment",
+        "name": "Baseline Item Data",
+        "req": "M",
+        "max_uses": 1,
+        "notes": "To specify basic and most frequently used line item data",
+        "syntax": [
+    		{"rule": "IFATLEASTONE", "criteria": [3, 2]},
+    		{"rule": "IFATLEASTONE", "criteria": [5, 4]},
+    		{"rule": "ALLORNONE", "criteria": [6, 7]},
+    		{"rule": "ALLORNONE", "criteria": [8, 9]},
+    		{"rule": "ALLORNONE", "criteria": [10, 11]},
+    		{"rule": "ALLORNONE", "criteria": [12, 13]},
+    		{"rule": "ALLORNONE", "criteria": [14, 15]},
+    		{"rule": "ALLORNONE", "criteria": [16, 17]},
+    		{"rule": "ALLORNONE", "criteria": [18, 19]},
+    		{"rule": "ALLORNONE", "criteria": [20, 21]},
+    		{"rule": "ALLORNONE", "criteria": [22, 23]},
+    		{"rule": "ALLORNONE", "criteria": [24, 125]}
+        ],
+        "elements": [
+            {
+                "id": "PO101",
+                "name": "Assigned Identification",
+                "type": "element",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 20
+                },
+                "notes": "Alphanumeric characters assigned for differentiation within a transaction set"
+            },
+            {
+                "id": "PO102",
+                "name": "Quantity",
+                "type": "element",
+                "req": "O",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 15
+                },
+                "notes": "Numeric value of quantity"
+            },
+            {
+                "id": "PO103",
+                "name": "Unit or Basis for Measurement Code",
+                "type": "element",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID355",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"
+            },
+            {
+                "id": "PO104",
+                "name": "Unit Price",
+                "type": "element",
+                "req": "O",
+                "data_type": "R",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 17
+                },
+                "notes": "Price per unit of product, service, commodity, etc."
+            },
+            {
+                "id": "PO105",
+                "name": "Basis of Unit Price Code",
+                "type": "element",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID639",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code identifying the type of unit price for an item"
+            },
+            {
+                "id": "PO106",
+                "name": "Product/Service ID Qualifier",
+                "type": "element",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID234",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code identifying the type/source of the descriptive number used in Product/Service"
+            },
+            {
+                "id": "PO107",
+                "name": "Product/Service ID",
+                "type": "element",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 48
+                },
+                "notes": "Identifying number for a product or service"
+            },
+            {
+                "id": "PO108",
+                "name": "Product/Service ID Qualifier",
+                "type": "element",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID234",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code identifying the type/source of the descriptive number used in Product/Service ID (234)"
+            },
+            {
+                "id": "PO109",
+                "name": "Product/Service ID",
+                "type": "element",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 48
+                },
+                "notes": "Identifying number for a product or service"
+            },
+            {
+                "id": "PO110",
+                "name": "Product/Service ID Qualifier",
+                "type": "element",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID234",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code identifying the type/source of the descriptive number used in Product/Service ID (234)"
+            },
+            {
+                "id": "PO111",
+                "name": "Product/Service ID",
+                "type": "element",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 48
+                },
+                "notes": "Identifying number for a product or service"
+            },
+            {
+                "id": "PO112",
+                "name": "Product/Service ID Qualifier",
+                "type": "element",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID234",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code identifying the type/source of the descriptive number used in Product/Service ID (234)"
+            },
+            {
+                "id": "PO113",
+                "name": "Product/Service ID",
+                "type": "element",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 48
+                },
+                "notes": "Identifying number for a product or service"
+            },
+            {
+                "id": "PO114",
+                "name": "Product/Service ID Qualifier",
+                "type": "element",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID234",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code identifying the type/source of the descriptive number used in Product/Service ID (234)"
+            },
+            {
+                "id": "PO115",
+                "name": "Product/Service ID",
+                "type": "element",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 48
+                },
+                "notes": "Identifying number for a product or service"
+            },
+            {
+                "id": "PO116",
+                "name": "Product/Service ID Qualifier",
+                "type": "element",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID234",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code identifying the type/source of the descriptive number used in Product/Service ID (234)"
+            },
+            {
+                "id": "PO117",
+                "name": "Product/Service ID",
+                "type": "element",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 48
+                },
+                "notes": "Identifying number for a product or service"
+            },
+            {
+                "id": "PO118",
+                "name": "Product/Service ID Qualifier",
+                "type": "element",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID234",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code identifying the type/source of the descriptive number used in Product/Service ID (234)"
+            },
+            {
+                "id": "PO119",
+                "name": "Product/Service ID",
+                "type": "element",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 48
+                },
+                "notes": "Identifying number for a product or service"
+            },
+            {
+                "id": "PO120",
+                "name": "Product/Service ID Qualifier",
+                "type": "element",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID234",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code identifying the type/source of the descriptive number used in Product/Service ID (234)"
+            },
+            {
+                "id": "PO121",
+                "name": "Product/Service ID",
+                "type": "element",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 48
+                },
+                "notes": "Identifying number for a product or service"
+            },
+            {
+                "id": "PO122",
+                "name": "Product/Service ID Qualifier",
+                "type": "element",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID234",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code identifying the type/source of the descriptive number used in Product/Service ID (234)"
+            },
+            {
+                "id": "PO123",
+                "name": "Product/Service ID",
+                "type": "element",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 48
+                },
+                "notes": "Identifying number for a product or service"
+            },
+            {
+                "id": "PO124",
+                "name": "Product/Service ID Qualifier",
+                "type": "element",
+                "req": "O",
+                "data_type": "ID",
+                "data_type_ids": "ID234",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code identifying the type/source of the descriptive number used in Product/Service ID (234)"
+            },
+            {
+                "id": "PO125",
+                "name": "Product/Service ID",
+                "type": "element",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 48
+                },
+                "notes": "Identifying number for a product or service"
+            }
+        ]
+    }
+]

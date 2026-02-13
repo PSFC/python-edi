@@ -1,0 +1,144 @@
+[
+    {   "id": "L_IT1", "type": "loop",
+        "name": "Baseline Item Data Loop",
+        "req": "O",
+        "repeat": 200000,
+        "segments": [
+            {   "id": "IT1", "type": "segment",
+                "name": "Baseline Item Data (Invoice)",
+                "req": "M",
+                "max_uses": 1,
+                "notes": "To specify the basic and most frequently used line item data for the invoice and related transactions",
+                "syntax": [
+                    {"rule": "ALLORNONE", "criteria": [2, 3, 4]},
+                    {"rule": "ALLORNONE", "criteria": [6, 7]},
+                    {"rule": "ALLORNONE", "criteria": [8, 9]},
+                    {"rule": "ALLORNONE", "criteria": [10, 11]},
+                    {"rule": "ALLORNONE", "criteria": [12, 13]},
+                    {"rule": "ALLORNONE", "criteria": [14, 15]},
+                    {"rule": "ALLORNONE", "criteria": [16, 17]},
+                    {"rule": "ALLORNONE", "criteria": [18, 19]},
+                    {"rule": "ALLORNONE", "criteria": [20, 21]},
+                    {"rule": "ALLORNONE", "criteria": [22, 23]},
+                    {"rule": "ALLORNONE", "criteria": [24, 25]}
+                ],
+                "elements": [
+                    {   "id": "IT101", "type": "element",
+                        "name": "Assigned Identification",
+                        "req": "O",
+                        "data_type": "AN",
+                        "data_type_ids": null,
+                        "length": {"min": 1, "max": 20},
+                        "notes": "Alphanumeric characters assigned for differentiation within a transaction set. May be original line number from PO"
+                    },
+                    {   "id": "IT102", "type": "element",
+                        "name": "Quantity Invoiced",
+                        "req": "O",
+                        "data_type": "R",
+                        "data_type_ids": null,
+                        "length": {"min": 1, "max": 10},
+                        "notes": "Date expressed as CCYYMMDD"
+                    },
+                    {   "id": "IT103", "type": "element",
+                        "name": "Unit or Basis for Measurement Code",
+                        "req": "O",
+                        "data_type": "ID",
+                        "data_type_ids": "ID355",
+                        "length": {"min": 2, "max": 2},
+                        "notes": "Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"
+                    },
+                    {   "id": "IT104", "type": "element",
+                        "name": "Unit Price",
+                        "req": "O",
+                        "data_type": "R",
+                        "data_type_ids": null,
+                        "length": {"min": 1, "max": 17},
+                        "notes": "Price per unit of product, service, commodity, etc."
+                    },
+                    {   "id": "IT105", "type": "element",
+                        "name": "Basis of Unit Price Code",
+                        "req": "O",
+                        "data_type": "ID",
+                        "data_type_ids": "ID639",
+                        "length": {"min": 2, "max": 2},
+                        "notes": "Code identifying the type of unit price for an item"
+                    },
+                    {   "id": "IT106", "type": "element",
+                        "name": "Product/Service ID Qualifier",
+                        "req": "O",
+                        "data_type": "ID",
+                        "data_type_ids": "ID234",
+                        "length": {"min": 2, "max": 2},
+                        "notes": "Code identifying the type/source of the descriptive number used in Product/Service ID"
+                    },
+                    {   "id": "IT107", "type": "element",
+                        "name": "Product/Service ID",
+                        "req": "O",
+                        "data_type": "AN",
+                        "data_type_ids": null,
+                        "length": {"min": 1, "max": 48},
+                        "notes": "Identifying number for a product or service"
+                    },
+                    {   "id": "IT108", "type": "element",
+                        "name": "Product/Service ID Qualifier",
+                        "req": "O",
+                        "data_type": "ID",
+                        "data_type_ids": "ID234",
+                        "length": {"min": 2, "max": 2},
+                        "notes": "Code identifying the type/source of the descriptive number used in Product/Service ID"
+                    },
+                    {   "id": "IT109", "type": "element",
+                        "name": "Product/Service ID",
+                        "req": "O",
+                        "data_type": "AN",
+                        "data_type_ids": null,
+                        "length": {"min": 1, "max": 48},
+                        "notes": "Identifying number for a product or service"
+                    },
+                    {   "id": "IT110", "type": "element",
+                        "name": "Product/Service ID Qualifier",
+                        "req": "O",
+                        "data_type": "ID",
+                        "data_type_ids": "ID234",
+                        "length": {"min": 2, "max": 2},
+                        "notes": "Code identifying the type/source of the descriptive number used in Product/Service ID"
+                    },
+                    {   "id": "IT111", "type": "element",
+                        "name": "Product/Service ID",
+                        "req": "O",
+                        "data_type": "AN",
+                        "data_type_ids": null,
+                        "length": {"min": 1, "max": 48},
+                        "notes": "Identifying number for a product or service"
+                    },
+					{   "id": "IT112", "type": "element",
+					    "name": "Product/Service ID Qualifier",
+					    "req": "O",
+					    "data_type": "ID",
+					    "data_type_ids": "ID234",
+					    "length": {"min": 2, "max": 2},
+					    "notes": "Code identifying the type/source of the descriptive number used in Product/Service ID"
+					},
+					{   "id": "IT113", "type": "element",
+					    "name": "Product/Service ID",
+					    "req": "O",
+					    "data_type": "AN",
+					    "data_type_ids": null,
+					    "length": {"min": 1, "max": 48},
+					    "notes": "Identifying number for a product or service"
+					}
+                ]
+            },
+            {
+				"id": "L_PID", "type": "placeholder"
+            },
+			{
+			    "id": "PO4", "type": "placeholder",
+				"max_uses": 1
+			},
+			{
+			    "id": "L_SAC", "type": "placeholder"
+			}
+        ]
+    }
+]

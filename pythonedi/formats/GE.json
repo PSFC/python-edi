@@ -1,0 +1,38 @@
+[
+    {
+        "id": "GE",
+        "type": "segment",
+        "name": "Functional Group Trailer",
+        "req": "M",
+        "max_uses": 1,
+        "notes": "To indicate the end of a functional group and to provide control information",
+        "elements": [
+            {
+                "id": "GE01",
+                "type": "element",
+                "name": "Number of Transaction Sets Included",
+                "req": "M",
+                "data_type": "N0",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 6
+                },
+                "notes": "Total number of transaction sets included in the functional group or interchange (transmission) group terminated by the trailer containing this data element"
+            },
+            {
+                "id": "GE02",
+                "type": "element",
+                "name": "Group Control Number",
+                "req": "M",
+                "data_type": "N0",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 9
+                },
+                "notes": "Assigned number originated and maintained by the sender"
+            }
+        ]
+    }
+]

@@ -1,0 +1,54 @@
+[
+    {
+        "id": "REF",
+        "type": "segment",
+        "name": "Reference Information",
+        "req": "O",
+        "max_uses": -1,
+        "notes": "To specify identifying information",
+         "syntax": [
+            {"rule": "ATLEASTONE", "criteria": [2, 3]}
+        ],
+        "elements": [
+            {
+                "id": "REF01",
+                "type": "element",
+                "name": "Reference Identification Qualifier",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": "ID128",
+                "length": {
+                    "min": 2,
+                    "max": 3
+                },
+                "notes": "Code identifying the Reference Identification"
+            },
+            {
+                "id": "REF02",
+                "type": "element",
+                "name": "Reference Identification",
+                "req": "C",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 80
+                },
+                "notes": "Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"
+            },
+            {
+                "id": "REF03",
+                "type": "element",
+                "name": "Description",
+                "req": "C",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 80
+                },
+                "notes": "A free-form description to clarify the related data elements and their content"
+            }
+        ]
+    }
+]

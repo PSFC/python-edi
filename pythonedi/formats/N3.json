@@ -1,0 +1,33 @@
+[
+    {
+        "id": "N3",
+        "type": "segment",
+        "name": "Address Information",
+        "req": "M",
+        "max_uses": 2,
+        "notes": "To specify the location of the named party",
+        "elements": [
+            {
+                "id": "N301",
+                "name": "Address Information",
+                "type": "element",
+                "req": "M",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 55
+                },
+                "notes": "Address information"
+            },
+            {   "id": "N302", "name": "Address Information",
+                "type": "element",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {"min": 1, "max": 55},
+                "notes": "Address Information"
+            }
+       ]
+	}
+]

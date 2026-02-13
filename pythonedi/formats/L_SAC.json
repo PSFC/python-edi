@@ -1,0 +1,15 @@
+[
+	{
+	    "id": "L_SAC",
+	    "type": "loop",
+	    "name": "Loop Service, Promotion, Allowance, or Charge Information",
+	    "req": "O",
+	    "repeat": 25,
+	    "segments": [
+			{
+				"id": "SAC", "type": "placeholder",
+	            "req": "M"
+			}
+	    ]
+	}
+]

@@ -1,27 +1,27 @@
 [
     {
-        "id": "ST",
+        "id": "SE",
         "type": "segment",
-        "name": "Transaction Set Header",
+        "name": "Transaction Set Trailer",
         "req": "M",
         "max_uses": 1,
-        "notes": "To indicate the start of a transaction set and to assign a control number",
+        "notes": "To indicate the end of the transaction set and provide the count of the transmitted segments (including the beginning (ST) and ending (SE) segments)",
         "elements": [
             {
-                "id": "ST01",
+                "id": "SE01",
                 "type": "element",
-                "name": "Transaction Set Identifier Code",
+                "name": "Number of Included Segments",
                 "req": "M",
-                "data_type": "ID",
-                "data_type_ids": "ID143",
+                "data_type": "N0",
+                "data_type_ids": null,
                 "length": {
-                    "min": 3,
-                    "max": 3
+                    "min": 1,
+                    "max": 10
                 },
-                "notes": "Code identifying a Transaction Set"
+                "notes": "Total number of segments included in a transaction set including ST and SE segments"
             },
             {
-                "id": "ST02",
+                "id": "SE02",
                 "type": "element",
                 "name": "Transaction Set Control Number",
                 "req": "M",

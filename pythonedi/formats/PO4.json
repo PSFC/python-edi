@@ -1,0 +1,206 @@
+[
+   {
+        "id": "PO4",
+        "type": "segment",
+        "name": "Item Physical Details",
+        "req": "O",
+        "max_uses": -1,
+        "notes": "To specify additional item-related data involving variations in normal price/quantity structure",
+        "syntax": [
+    		{"rule": "ALLORNONE", "criteria": [2, 3]},
+    		{"rule": "IFATLEASTONE", "criteria": [5, 6]},
+    		{"rule": "ALLORNONE", "criteria": [6, 7]},
+    		{"rule": "ALLORNONE", "criteria": [8, 9]},
+    		{"rule": "IFATLEASTONE", "criteria": [10, 13]},
+    		{"rule": "IFATLEASTONE", "criteria": [11, 13]},
+    		{"rule": "IFATLEASTONE", "criteria": [12, 13]},
+    		{"rule": "IFATLEASTONE", "criteria": [13, 10, 11, 12]},
+    		{"rule": "IFATLEASTONE", "criteria": [17, 16]},
+    		{"rule": "IFATLEASTONE", "criteria": [18, 4]}
+        ],
+        "elements": [
+			{
+                "id": "PO401",
+                "name": "Pack",
+                "type": "element",
+                "req": "O",
+                "data_type": "N0",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 6
+                },
+                "notes": "The number of inner containers, or number of eaches if there are no inner containers, per outer container"
+			},
+            {
+                "id": "PO402",
+                "type": "element",
+                "name": "Size",
+                "req": "C",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 8
+                },
+                "notes": "Size of supplier units in pack"
+            },
+            {
+                "id": "PO403",
+                "type": "element",
+                "name": "Unit or Basis for Measurement Code",
+                "req": "C",
+                "data_type": "ID",
+                "data_type_ids": "ID355",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "PO403"
+            },
+            {
+                "id": "PO404",
+                "type": "element",
+                "name": "PO404",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 1
+                },
+                "notes": "PO404"
+            },
+            {
+                "id": "PO405",
+                "type": "element",
+                "name": "PO405",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 1
+                },
+                "notes": "PO405"
+            },
+            {
+                "id": "PO406",
+                "type": "element",
+                "name": "PO406",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 1
+                },
+                "notes": "PO406"
+            },
+            {
+                "id": "PO407",
+                "type": "element",
+                "name": "PO407",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 1
+                },
+                "notes": "PO407"
+            },
+            {
+                "id": "PO408",
+                "type": "element",
+                "name": "PO408",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 1
+                },
+                "notes": "PO408"
+            },
+            {
+                "id": "PO409",
+                "type": "element",
+                "name": "PO409",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 1
+                },
+                "notes": "PO409"
+            },
+            {
+                "id": "PO410",
+                "type": "element",
+                "name": "PO410",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 1
+                },
+                "notes": "PO410"
+            },
+            {
+                "id": "PO411",
+                "type": "element",
+                "name": "PO411",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 1
+                },
+                "notes": "PO411"
+            },
+            {
+                "id": "PO412",
+                "type": "element",
+                "name": "PO412",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 1
+                },
+                "notes": "PO412"
+            },
+            {
+                "id": "PO413",
+                "type": "element",
+                "name": "PO413",
+                "req": "O",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 1
+                },
+                "notes": "PO413"
+            },
+            {
+                "id": "PO414",
+                "name": "Inner Pack",
+                "type": "element",
+                "req": "O",
+                "data_type": "N0",
+                "data_type_ids": null,
+                "length": {
+                    "min": 1,
+                    "max": 6
+                },
+                "notes": "The number of eaches per inner container"
+            }
+		]
+	}
+]

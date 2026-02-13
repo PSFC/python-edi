@@ -1,0 +1,565 @@
+[
+    {
+        "id": "ISA", "type": "placeholder"
+	},
+    {
+        "id": "GS", "type": "placeholder"
+	},
+    {
+		"id": "ST", "type": "placeholder"
+    },
+    {
+        "id": "BSN",
+        "type": "segment",
+        "name": "Beginning Segment for Ship Notice",
+        "req": "M",
+        "max_uses": 1,
+        "notes": "To transmit identifying numbers, dates, and other basic data relating to the transaction set",
+		"syntax": [
+            {"rule": "IFATLEASTONE", "criteria": [7, 6]}
+        ],
+        "elements": [
+            {
+                "id": "BSN01",
+                "type": "element",
+                "name": "Transaction Set Purpose Code",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": "ID353",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code identifying purpose of transaction set"
+            },
+            {
+                "id": "BSN02",
+                "type": "element",
+                "name": "Shipment Identification",
+                "req": "M",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {
+                    "min": 2,
+                    "max": 30
+                },
+                "notes": "A unique control number assigned by the original shipper to identify a specific shipment"
+            },
+            {
+                "id": "BSN03",
+                "type": "element",
+                "name": "Date",
+                "req": "M",
+                "data_type": "DT",
+                "data_type_ids": null,
+                "length": {
+                    "min": 8,
+                    "max": 8
+                },
+                "notes": "Date expressed as CCYYMMDD (BSN03 is the date the shipment transaction set is created.)"
+            },
+            {
+                "id": "BSN04",
+                "type": "element",
+                "name": "Time",
+                "req": "M",
+                "data_type": "TM",
+                "data_type_ids": null,
+                "length": {
+                    "min": 4,
+                    "max": 8
+                },
+                "notes": "Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99) (BSN04 is the time the shipment transaction set is created.)"
+            },
+            {
+                "id": "BSN05",
+                "type": "element",
+                "name": "Hierarchical Structure Code",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": "ID1005",
+                "length": {
+                    "min": 4,
+                    "max": 4
+                },
+                "notes": "Code indicating the hierarchical application structure of a transaction set that utilizes the HL segment to define the structure of the transaction set"
+            },
+            {
+                "id": "BSN06",
+                "type": "element",
+                "name": "Transaction Type Code",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": "ID640",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code specifying the type of transaction"
+            },
+            {
+                "id": "BSN07",
+                "type": "element",
+                "name": "Status Reason Code",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": "ID641",
+                "length": {
+                    "min": 2,
+                    "max": 2
+                },
+                "notes": "Code indicating the status reason"
+            }
+        ]
+    },
+    {
+		"id": "DTM", "type": "placeholder"
+    },
+    {
+        "id": "L_HL",
+        "type": "loop",
+        "name": "Hierarchical Level Loop",
+        "req": "M",
+        "repeat": 200000,
+        "segments": [
+            {
+		        "id": "HL",
+		        "type": "segment",
+		        "name": "Hierarchical Level",
+		        "req": "M",
+		        "max_uses": 1,
+		        "notes": "To identify dependencies among and the content of hierarchically related groups of data segments",
+		        "elements": [
+		            {
+		                "id": "HL01",
+		                "type": "element",
+		                "name": "Hierarchical ID Number",
+		                "req": "M",
+		                "data_type": "AN",
+		                "data_type_ids": null,
+		                "length": {
+		                    "min": 1,
+		                    "max": 12
+		                },
+		                "notes": "A unique number assigned by the sender to identify a particular data segment in a hierarchical structure"
+		            },
+		            {
+		                "id": "HL02",
+		                "type": "element",
+		                "name": "Hierarchical Parent ID Number",
+		                "req": "O",
+		                "data_type": "AN",
+		                "data_type_ids": null,
+		                "length": {
+		                    "min": 1,
+		                    "max": 12
+		                },
+		                "notes": "Identification number of the next higher hierarchical data segment that the data segment being described is subordinate to"
+		            },
+		            {
+		                "id": "HL03",
+		                "type": "element",
+		                "name": "Hierarchical Level Code",
+		                "req": "M",
+		                "data_type": "ID",
+		                "data_type_ids": "ID735",
+		                "length": {
+		                    "min": 1,
+		                    "max": 2
+		                },
+		                "notes": "Code specifying the characteristic of a level in a hierarchical structure"
+		            },
+		            {
+		                "id": "HL04",
+		                "type": "element",
+		                "name": "Hierarchical Child Code",
+		                "req": "O",
+		                "data_type": "ID",
+		                "data_type_ids": "ID736",
+		                "length": {
+		                    "min": 1,
+		                    "max": 1
+		                },
+		                "notes": "Code indicating if there are hierarchical child data segments subordinate to the level being described"
+		            }
+				]
+            },
+            {
+				"id": "LIN", "type": "placeholder"
+			},
+            {
+				"id": "SN1",
+		        "type": "segment",
+		        "name": "Item Detail (Shipment)",
+		        "req": "O",
+		        "max_uses": 1,
+		        "notes": "To specify line-item detail relative to shipment",
+				"syntax": [
+			        {"rule": "ALLORNONE", "criteria": [5, 6]}
+			    ],
+		        "elements": [
+		            {
+		                "id": "SN101",
+		                "type": "element",
+		                "name": "Assigned Identification",
+		                "req": "O",
+		                "data_type": "AN",
+		                "data_type_ids": null,
+		                "length": {
+		                    "min": 1,
+		                    "max": 20
+		                },
+		                "notes": "Alphanumeric characters assigned for differentiation within a transaction set (SN101 is the ship notice line-item identification.)"
+		            },
+		            {
+		                "id": "SN102",
+		                "type": "element",
+		                "name": "Number of Units Shipped",
+		                "req": "M",
+		                "data_type": "R",
+		                "data_type_ids": null,
+		                "length": {
+		                    "min": 1,
+		                    "max": 10
+		                },
+		                "notes": "Numeric value of units shipped in manufacturer's shipping units for a line item or transaction set"
+		            },
+		            {
+		                "id": "SN103",
+		                "type": "element",
+		                "name": "Unit or Basis for Measurement Code",
+		                "req": "M",
+		                "data_type": "ID",
+		                "data_type_ids": "ID355",
+		                "length": {
+		                    "min": 2,
+		                    "max": 2
+		                },
+		                "notes": "Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken (SN103 defines the unit of measurement for both SN102 and SN104.)"
+		            },
+		            {
+		                "id": "SN104",
+		                "type": "element",
+		                "name": "Quantity Shipped to Date",
+		                "req": "O",
+		                "data_type": "R",
+		                "data_type_ids": null,
+		                "length": {
+		                    "min": 1,
+		                    "max": 15
+		                },
+		                "notes": "Number of units shipped to date"
+		            },
+		            {
+		                "id": "SN105",
+		                "type": "element",
+		                "name": "Quantity Ordered",
+		                "req": "C",
+		                "data_type": "R",
+		                "data_type_ids": null,
+		                "length": {
+		                    "min": 1,
+		                    "max": 15
+		                },
+		                "notes": "Quantity ordered"
+		            },
+		            {
+		                "id": "SN106",
+		                "type": "element",
+		                "name": "Unit or Basis for Measurement Code",
+		                "req": "C",
+		                "data_type": "ID",
+		                "data_type_ids": "ID355",
+		                "length": {
+		                    "min": 2,
+		                    "max": 2
+		                },
+		                "notes": "Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken (SN103 defines the unit of measurement for both SN102 and SN104.)"
+		            },
+		            {
+		                "id": "SN107",
+		                "type": "element",
+		                "name": "Returnable Container Load Make-Up Code",
+		                "req": "O",
+		                "data_type": "ID",
+		                "data_type_ids": "ID728",
+		                "length": {
+		                    "min": 1,
+		                    "max": 2
+		                },
+		                "notes": "Code identifying the load make-up of the returnable containers in the shipment"
+		            },
+		            {
+		                "id": "SN108",
+		                "type": "element",
+		                "name": "Line Item Status Code",
+		                "req": "O",
+		                "data_type": "ID",
+		                "data_type_ids": "ID668",
+		                "length": {
+		                    "min": 2,
+		                    "max": 2
+		                },
+		                "notes": "Code identifying the load make-up of the returnable containers in the shipment"
+		            }
+				]
+			},
+            {
+				"id": "PRF",
+		        "type": "segment",
+		        "name": "Purchase Order Reference",
+		        "req": "O",
+		        "max_uses": 1,
+		        "notes": "To provide reference to a specific purchase order",
+		        "elements": [
+		            {
+		                "id": "PRF01",
+		                "type": "element",
+		                "name": "Purchase Order Number",
+		                "req": "M",
+		                "data_type": "AN",
+		                "data_type_ids": null,
+		                "length": {
+		                    "min": 1,
+		                    "max": 22
+		                },
+		                "notes": "Identifying number for Purchase Order assigned by the orderer/purchaser"
+		            },
+		            {
+		                "id": "PRF02",
+		                "type": "element",
+		                "name": "Release Number",
+		                "req": "O",
+		                "data_type": "AN",
+		                "data_type_ids": null,
+		                "length": {
+		                    "min": 1,
+		                    "max": 30
+		                },
+		                "notes": "Number identifying a release against a Purchase Order previously placed by the parties involved in the transaction"
+		            },
+		            {
+		                "id": "PRF03",
+		                "type": "element",
+		                "name": "Change Order Sequence Number",
+		                "req": "O",
+		                "data_type": "AN",
+		                "data_type_ids": null,
+		                "length": {
+		                    "min": 1,
+		                    "max": 8
+		                },
+		                "notes": "Number assigned by the orderer identifying a specific change or revision to a previously transmitted transaction set"
+		            },
+		            {
+		                "id": "PRF04",
+		                "type": "element",
+		                "name": "Date",
+		                "req": "O",
+		                "data_type": "DT",
+		                "data_type_ids": null,
+		                "length": {
+		                    "min": 8,
+		                    "max": 8
+		                },
+		                "notes": "Date expressed as CCYYMMDD (PRF04 is the date assigned by the purchaser to purchase order.)"
+		            },
+		            {
+		                "id": "PRF05",
+		                "type": "element",
+		                "name": "Assigned Identification",
+		                "req": "O",
+		                "data_type": "AN",
+		                "data_type_ids": null,
+		                "length": {
+		                    "min": 1,
+		                    "max": 20
+		                },
+		                "notes": "Alphanumeric characters assigned for differentiation within a transaction set"
+		            },
+		            {
+		                "id": "PRF06",
+		                "type": "element",
+		                "name": "Contract Number",
+		                "req": "O",
+		                "data_type": "AN",
+		                "data_type_ids": null,
+		                "length": {
+		                    "min": 1,
+		                    "max": 30
+		                },
+		                "notes": "Contract number"
+		            },
+		            {
+		                "id": "PRF07",
+		                "type": "element",
+		                "name": "Purchase Order Type Code",
+		                "req": "O",
+		                "data_type": "ID",
+		                "data_type_ids": "ID92",
+		                "length": {
+		                    "min": 2,
+		                    "max": 2
+		                },
+		                "notes": "Code specifying the type of Purchase Order"
+		            }
+				]
+            },
+			{
+				"id": "PO4", "type": "placeholder",
+			    "max_uses": 1
+			},
+            {
+				"id": "PID", "type": "placeholder",
+		        "max_uses": 200
+			},
+            {
+				"id": "REF", "type": "placeholder"
+			},
+            {
+				"id": "MAN",
+		        "type": "segment",
+		        "name": "Marks and Numbers",
+		        "req": "O",
+		        "max_uses": -1,
+		        "notes": "To indicate identifying marks and numbers for shipping containers",
+				"syntax": [
+			        {"rule": "ALLORNONE", "criteria": [4, 5]},
+					{"rule": "IFATLEASTONE", "criteria": [6, 5]}
+			    ],
+		        "elements": [
+		            {
+		                "id": "MAN01",
+		                "type": "element",
+		                "name": "Marks and Numbers Qualifier",
+		                "req": "M",
+		                "data_type": "ID",
+		                "data_type_ids": "ID88",
+		                "length": {
+		                    "min": 1,
+		                    "max": 2
+		                },
+		                "notes": "Code specifying the application or source of Marks and Numbers"
+		            },
+		            {
+		                "id": "MAN02",
+		                "type": "element",
+		                "name": "Marks and Numbers",
+		                "req": "M",
+		                "data_type": "AN",
+		                "data_type_ids": null,
+		                "length": {
+		                    "min": 1,
+		                    "max": 48
+		                },
+		                "notes": "Marks and numbers used to identify a shipment or parts of a shipment"
+		            },
+		            {
+		                "id": "MAN03",
+		                "type": "element",
+		                "name": "Marks and Numbers",
+		                "req": "O",
+		                "data_type": "AN",
+		                "data_type_ids": null,
+		                "length": {
+		                    "min": 1,
+		                    "max": 48
+		                },
+		                "notes": "Marks and numbers used to identify a shipment or parts of a shipment"
+		            },
+		            {
+		                "id": "MAN04",
+		                "type": "element",
+		                "name": "Marks and Numbers Qualifier",
+		                "req": "C",
+		                "data_type": "ID",
+		                "data_type_ids": "ID88",
+		                "length": {
+		                    "min": 1,
+		                    "max": 2
+		                },
+		                "notes": "Code specifying the application or source of Marks and Numbers"
+		            },
+		            {
+		                "id": "MAN05",
+		                "type": "element",
+		                "name": "Marks and Numbers",
+		                "req": "C",
+		                "data_type": "AN",
+		                "data_type_ids": null,
+		                "length": {
+		                    "min": 1,
+		                    "max": 48
+		                },
+		                "notes": "Marks and numbers used to identify a shipment or parts of a shipment"
+		            },
+		            {
+		                "id": "MAN06",
+		                "type": "element",
+		                "name": "Marks and Numbers",
+		                "req": "O",
+		                "data_type": "AN",
+		                "data_type_ids": null,
+		                "length": {
+		                    "min": 1,
+		                    "max": 48
+		                },
+		                "notes": "Marks and numbers used to identify a shipment or parts of a shipment"
+		            }
+				]
+			},
+			{
+				"id": "DTM", "type": "placeholder"
+			},
+		    {
+				"id": "L_N1",
+		        "type": "loop",
+		        "name": "Name Loop",
+		        "req": "O",
+		        "repeat": 200,
+		        "segments": [
+		            {
+		                "id": "N1", "type": "placeholder"
+		            },
+		            {
+						"id": "N2", "type": "placeholder"
+		            },
+		            {
+						"id": "N3", "type": "placeholder",
+		                "req": "O"
+		            },
+		            {
+		                "id": "N4", "type": "placeholder",
+		                "req": "O",
+		                "max_uses": 1
+					},
+				    {
+						"id": "REF", "type": "placeholder",
+				        "max_uses": 12
+				    },
+					{
+		                "id": "PER", "type": "placeholder",
+		                "max_uses": 3
+					},
+				    {
+				        "id": "FOB", "type": "placeholder",
+		                "max_uses": 1
+				    }
+				]
+		    }
+		]
+    },
+    {
+		"id": "CTT", "type": "placeholder",
+        "req": "O"
+    },
+    {
+        "id": "SE", "type": "placeholder"
+    },
+    {
+        "id": "GE", "type": "placeholder"
+    },
+    {
+        "id": "IEA", "type": "placeholder"
+	}
+]

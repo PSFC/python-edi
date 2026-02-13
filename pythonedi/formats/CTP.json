@@ -1,0 +1,51 @@
+[
+	{
+	     "id": "CTP",
+	     "type": "segment",
+	     "name": "Pricing Information",
+	     "req": "M",
+	     "max_uses": 1,
+	     "notes": "To specify pricing information",
+	     "elements": [
+	         {
+	             "id": "CTP01",
+	             "name": "Class of Trade Code",
+	             "type": "element",
+	             "req": "O",
+	             "data_type": "ID",
+	             "data_type_ids": "ID687",
+	             "length": {
+	                 "min": 2,
+	                 "max": 2
+	             },
+	             "notes": "Code indicating class of trade"
+	         },
+	         {
+	             "id": "CTP02",
+	             "name": "Price Identifier Code",
+	             "type": "element",
+	             "req": "O",
+	             "data_type": "ID",
+	             "data_type_ids": "ID236",
+	             "length": {
+	                 "min": 3,
+	                 "max": 3
+	             },
+	             "notes": "Code identifying pricing specification"
+	         },
+	         {
+	             "id": "CTP03",
+	             "name": "Unit Price",
+	             "type": "element",
+	             "req": "O",
+	             "data_type": "R",
+	             "data_type_ids": null,
+	             "length": {
+	                 "min": 1,
+	                 "max": 17
+	             },
+	             "notes": "Price per unit of product, service, commodity, etc."
+	         }
+	     ]
+	 }
+]

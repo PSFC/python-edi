@@ -1,0 +1,18 @@
+[
+	{   "id": "MSG", "type": "segment",
+	    "name": "Text Message",
+	    "req": "O",
+	    "max_uses": 10,
+	    "notes": "Free-form text",
+	    "elements": [
+	        {   "id": "MSG01", "type": "element",
+	            "name": "Message Text",
+	            "req": "M",
+	            "data_type": "AN",
+	            "data_type_ids": null,
+	            "length": {"min": 1, "max": 264},
+	            "notes": "Free-form text"
+	        }
+	    ]
+	}
+]

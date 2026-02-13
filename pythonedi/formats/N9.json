@@ -1,0 +1,38 @@
+[
+    {   "id": "N9", "type": "segment",
+        "name": "Reference",
+        "req": "O",
+        "max_uses": 1,
+        "notes": "Used with notes",
+ 		"syntax": [
+            {"rule": "ATLEASTONE", "criteria": [2, 3]},
+            {"rule": "IFATLEASTONE", "criteria": [6, 5]}
+        ],
+        "elements": [
+            {   "id": "N901", "type": "element",
+                "name": "Reference Ident. Qualifier",
+                "req": "M",
+                "data_type": "ID",
+                "data_type_ids": "ID128",
+                "length": {"min": 2, "max": 3},
+                "notes": "Code specifying type of date or time, or both date and time"
+            },
+            {   "id": "N902", "type": "element",
+                "name": "Reference Identification",
+                "req": "C",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {"min": 1, "max": 30},
+                "notes": "MSG to Follow"
+            },
+            {   "id": "N903", "type": "element",
+                "name": "Free-form Description",
+                "req": "C",
+                "data_type": "AN",
+                "data_type_ids": null,
+                "length": {"min": 1, "max": 45},
+                "notes": "Free-form descriptive text"
+            }
+        ]
+    }	
+]
