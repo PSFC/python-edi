@@ -9,11 +9,12 @@ from .supported_formats import supported_formats
 from .debug import Debug
 
 class EDIParser(object):
-    def __init__(self, edi_format=None, element_delimiter="^", segment_delimiter="\n", data_delimiter="`"):
+    def __init__(self, edi_format=None, element_delimiter="^", segment_delimiter="\n", data_delimiter="`", component_element_delimiter=":", trans_set=None):
         # Set default delimiters
         self.element_delimiter = element_delimiter
         self.segment_delimiter = segment_delimiter
         self.data_delimiter = data_delimiter
+        self.component_element_delimiter = component_element_delimiter
 
         # Set EDI format to use
         if edi_format in supported_formats:
@@ -22,6 +23,11 @@ class EDIParser(object):
             self.edi_format = None
         else:
             raise ValueError("Unsupported EDI format {}".format(edi_format))
+
+        self.trans_set = trans_set
+        self.trans_set_specified = True if self.trans_set else False
+        self.groups_defined = False
+        self.group_count = 1
 
     def parse_isa_header(self, data):
         # make sure this is EDI data
