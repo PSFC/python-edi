@@ -13,7 +13,7 @@ setup(
     author="Jon Winsley",
     author_email="jon.winsley@gmail.com",
     license="MIT",
-    version="0.2.0",
+    version="0.2.1",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Environment :: Plugins",
@@ -26,7 +26,7 @@ setup(
     ],
     keywords="x12 edi 810",
     packages=find_packages(exclude=['test']),
-    package_data={"pythonedi": ["formats/*.json"]},
+    package_data={"pythonedi": ["formats/*.json", "formats/codes/*.json"]},
     install_requires=['colorama'],
     include_package_data=True,
 )
