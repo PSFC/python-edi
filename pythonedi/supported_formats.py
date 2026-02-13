@@ -2,8 +2,9 @@
 Imports and manages EDI format definitions
 """
 
-import os
+import copy
 import json
+import os
 
 format_dir = os.path.join(os.path.dirname(__file__), "formats")
 
