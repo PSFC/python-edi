@@ -13,7 +13,8 @@ setup(
     author="Jon Winsley",
     author_email="jon.winsley@gmail.com",
     license="MIT",
-    version="0.2.2",
+    # version now set dynamically using setuptools_scm (via pyproject.toml)
+    #version="0.2.2",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Environment :: Plugins",
