@@ -3,6 +3,7 @@ requires = ["setuptools", "setuptools_scm", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
+name = "PythonEDI"
 dynamic = ["version"]
 
 [tool.setuptools_scm]

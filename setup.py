@@ -5,7 +5,8 @@ import re
 from setuptools import setup, find_packages
 
 setup(
-    name="PythonEDI",
+    # name is now defined in pyproject.toml
+    #name="PythonEDI",
     description="An X12 EDI generator/parser",
     long_description="""PythonEDI uses JSON format definitions to make it easy
     to generate or read X12 EDI messages from/to Python dicts/lists.""",
