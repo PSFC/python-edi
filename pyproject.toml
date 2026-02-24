@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "PythonEDI"
-dynamic = ["version"]
+dynamic = ["version", "dependencies"]
 
 [tool.setuptools_scm]
 # Configuration options can go here if needed, default is often sufficient
