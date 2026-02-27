@@ -26,7 +26,7 @@ class ValidationError:
 REQUIRED_SEGMENTS = ('ISA', 'ST', 'SE', 'IEA')
 
 class EDIValidator(object):
-    def validate(self, edi_data, edi_format : Union[dict, list]) -> list:
+    def validate(self, edi_data, edi_format : Union[dict, list]) -> list[ValidationError]:
         self.edi_data = edi_data
         self.edi_format : Union[dict, list] = edi_format
         self.validation_errors : list = []
@@ -223,3 +223,11 @@ class EDIValidator(object):
             return schema['segments'] if schema['type'] == 'loop' else schema['elements']
         except:
             return None
+
+    @classmethod
+    def errors_in_required_segments(cls, validation_errors : list[ValidationError]):
+        for each in validation_errors:
+            if each.segment in REQUIRED_SEGMENTS:
+                return True
+    
+        return False
