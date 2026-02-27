@@ -147,3 +147,12 @@ class DebugMaster(object):
         print(Fore.RED + "------------" + Style.RESET_ALL)
 
 Debug = DebugMaster()
+
+''' Utility class to save/set/restore Debug level. '''
+class DebugLevel:
+    def __init__(self, new_level):
+        self.old_level = Debug.level
+        Debug.level = new_level
+
+    def restore(self):
+        Debug.level = self.old_level
