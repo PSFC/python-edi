@@ -10,6 +10,7 @@ import os
 
 from .EDIGenerator import EDIGenerator, Debug, supported_formats
 from .EDIParser import EDIParser
+from .EDIValidator import EDIValidator
 
 def explain(edi_format, section_id=""):
     """ Explains the referenced section of the referenced EDI format.

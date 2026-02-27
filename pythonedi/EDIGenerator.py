@@ -120,7 +120,7 @@ class EDIGenerator(object):
 
         # PSFC: Exception handling to report segment for failed element
         try:
-            for e_data, e_format, index in zip(segment_data, segment["elements"], range(len(segment["elements"]))):
+            for e_data, e_format, _ in zip(segment_data, segment["elements"], range(len(segment["elements"]))):
                 # PSFC: Allow for composite elements
                 output_elements.append(self.build_element_list(e_format, e_data))
         except ValueError as ve:

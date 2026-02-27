@@ -8,7 +8,8 @@ class TestParse810(unittest.TestCase):
     """ Tests the Parser module """
     def setUp(self):
         self.parser = pythonedi.EDIParser(edi_format="810") #, segment_delimiter="~")
-
+        self.validator = pythonedi.EDIValidator()
+ 
     def test_parse(self):
         with open("test/test_edi.txt", "r") as test_edi_file:
             test_edi = test_edi_file.read()
@@ -16,3 +17,5 @@ class TestParse810(unittest.TestCase):
             print("\n\n{}".format(found_segments))
             print("\n\n")
             pprint.pprint(edi_data)
+            
+            self.validator.validate(edi_data, self.parser.edi_format)
