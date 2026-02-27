@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Union
 
 ''' Defines EDI data delimiters '''
-class Delimiters:
+class EDIDelimiters:
     def __init__(self, segment_delimiter: str = "\n", element_delimiter: str = "*", repetition_delimiter: str = "^", component_element_delimiter: str = ":"):
         self.segment_delimiter = segment_delimiter
         self.element_delimiter = element_delimiter
