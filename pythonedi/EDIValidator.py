@@ -155,9 +155,9 @@ class EDIValidator(object):
         #print(f"Validate element: {element_id}, value: {element_value}, for segment: {seg_id}")
         if element_value is None:
             if element_schema["req"] == "M":
-                self.add_error("element", element_id, segment = seg_id, error = f"Element is mandatory in segment '{seg_id}'")
+                self.add_error("element", name = element_id, segment = seg_id, error = f"Element '{element_id}' is mandatory in segment '{seg_id}'")
             elif element_schema["req"] not in ("O", "C"):
-                self.add_error("element", element_id, error = f"Unknown 'req' value '{element_schema['req']}' when processing element in segment '{seg_id}'")
+                self.add_error("element", name = element_id, error = f"Unknown 'req' value '{element_schema['req']}' when processing element '{element_id}' in segment '{seg_id}'")
         else:
             element_type = element_schema["data_type"]
             min_len = element_schema["length"]["min"]
@@ -165,20 +165,20 @@ class EDIValidator(object):
 
             if element_type == "DT":
                 if max_len not in (6, 8):
-                    self.add_error("element", element_id, segment = seg_id, error = f"Invalid length ({max_len}) for date field in segment '{seg_id}'")
+                    self.add_error("element", name = element_id, segment = seg_id, error = f"Invalid length ({max_len}) for date field '{element_id}' in segment '{seg_id}'")
                 if not isinstance(element_value, datetime):
-                    self.add_error("element", element_id, segment = seg_id, error = f"Invalid data type ({type(element_value)}) for date field in segment '{seg_id}'")
+                    self.add_error("element", element_id, segment = seg_id, error = f"Invalid data type ({type(element_value)}) for date field '{element_id}' in segment '{seg_id}'")
             elif element_type== "TM":
                 if max_len not in (4, 6, 7, 8):
-                    self.add_error("element", element_id, segment = seg_id, error = f"Invalid length ({max_len}) for time field in segment '{seg_id}'")
+                    self.add_error("element", name = element_id, segment = seg_id, error = f"Invalid length ({max_len}) for time field '{element_id}' in segment '{seg_id}'")
                 if not isinstance(element_value, datetime):
-                    self.add_error("element", element_id, error = f"Invalid data type ({type(element_value)}) for time field in segment '{seg_id}'")
+                    self.add_error("element", name = element_id, error = f"Invalid data type ({type(element_value)}) for time field '{element_id}' in segment '{seg_id}'")
             elif element_type == "R":
                 if not isinstance(element_value, float):
-                    self.add_error("element", element_id, segment = seg_id, error = f"Invalid data type ({type(element_value)}) for decimal field in segment '{seg_id}'")
+                    self.add_error("element", name = element_id, segment = seg_id, error = f"Invalid data type ({type(element_value)}) for decimal field '{element_id}' in segment '{seg_id}'")
             elif element_type.startswith("N"):
                 if not isinstance(element_value, (float, int)):
-                    self.add_error("element", element_id, segment = seg_id, error = f"Invalid data type ({type(element_value)}) for number field in segment '{seg_id}'")
+                    self.add_error("element", name = element_id, segment = seg_id, error = f"Invalid data type ({type(element_value)}) for number field' '{element_id}' in segment '{seg_id}'")
             elif element_type == "ID":
                 data_type_ids = element_schema.get("data_type_ids", None)
 
@@ -187,7 +187,7 @@ class EDIValidator(object):
                     #self.add_error("element", element_id, error = f"No valid IDs provided for id field value '{element_value}' in segment '{seg_id}'")
                     pass
                 elif element_value not in data_type_ids:
-                    self.add_error("element", element_id, segment = seg_id, error = f"Invalid data value '{element_value}' for id field in segment '{seg_id}'. Valid values: {self.data_type_list(data_type_ids)}")
+                    self.add_error("element", name = element_id, segment = seg_id, error = f"Invalid data value '{element_value}' for id field '{element_id}' in segment '{seg_id}'. Valid values: {self.data_type_list(data_type_ids)}")
 
             # date/time types already have min/max data length specifiers validated.
             if  element_type not in ("DT", "TM"):
@@ -196,9 +196,9 @@ class EDIValidator(object):
                 if element_type.startswith('N'):
                     # For numeric data, only validate max length, as it will be left padded with zero's
                     if data_len > max_len:
-                        self.add_error("element", element_id, segment = seg_id, error = f"Element data length {data_len} greater than {max_len} in segment '{seg_id}'")
+                        self.add_error("element", name = element_id, segment = seg_id, error = f"Element '{element_id}' data length {data_len} greater than {max_len} in segment '{seg_id}'")
                 elif data_len < min_len or data_len > max_len:
-                    self.add_error("element", element_id, segment = seg_id, error = f"Element data length {data_len} outside range of {min_len} to {max_len} in segment '{seg_id}'")
+                    self.add_error("element", name = element_id, segment = seg_id, error = f"Element '{element_id}' data length {data_len} outside range of {min_len} to {max_len} in segment '{seg_id}'")
 
     def required_elements(self, seg_id, rule) -> str:
         return ", ".join([EDIUtils.element_name(seg_id, e) for e in rule["criteria"]])
