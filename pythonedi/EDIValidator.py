@@ -14,11 +14,12 @@ class ValidationException(Exception):
         self.errors = errors
 
 class ValidationError:
-    def __init__(self, data_type, name, segment, error):
+    def __init__(self, data_type, name, segment, error, level):
         self.data_type = data_type
         self.name = name
         self.segment = segment
         self.error = error
+        self.level = level
 
     def __str__(self):
         return f"{self.data_type} {self.name}, segment: {self.segment}, error: {self.error}"
@@ -30,6 +31,7 @@ class EDIValidator(object):
         self.edi_data = edi_data
         self.edi_format : Union[dict, list] = edi_format
         self.validation_errors : list = []
+        self.level = 0
 
         for req_seg in REQUIRED_SEGMENTS:
             if req_seg not in self.edi_data.keys():
@@ -40,6 +42,8 @@ class EDIValidator(object):
         return self.validation_errors 
 
     def validate_children(self, parent, children : Union[dict, list], schemas : list[dict]):
+        self.level += 1
+
         if not schemas:
             self.add_error(type = f"{type(children)}", error = f"Children have no associated schema list") 
         elif isinstance(children, dict):
@@ -207,7 +211,7 @@ class EDIValidator(object):
         return ", ".join(f"'{each}'" for each in data_type_ids)
 
     def add_error(self, data_type = 'segment', name = 'unknown', segment = None, error = ''):
-        self.validation_errors.append(ValidationError(data_type, name, segment, error))
+        self.validation_errors.append(ValidationError(data_type, name, segment, error, self.level))
 
     def schema_id_list(self, schemas : list[dict]) -> list:
         return [each['id'] for each in schemas]
