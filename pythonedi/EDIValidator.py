@@ -42,8 +42,6 @@ class EDIValidator(object):
         return self.validation_errors 
 
     def validate_children(self, parent, children : Union[dict, list], schemas : list[dict]):
-        self.level += 1
-
         if not schemas:
             self.add_error(type = f"{type(children)}", error = f"Children have no associated schema list") 
         elif isinstance(children, dict):
@@ -113,6 +111,8 @@ class EDIValidator(object):
             self.validate_single_segment(seg_id, seg_data, seg_schema)
  
     def validate_single_segment(self, seg_id, seg_data : dict, seg_schema : dict):
+            self.level += 1
+
             num_elements = len(seg_data)
             num_schema_elements = len(seg_schema['elements'])
 
