@@ -171,7 +171,7 @@ class EDIValidator(object):
                 if max_len not in (6, 8):
                     self.add_error("element", name = element_id, segment = seg_id, error = f"Invalid length ({max_len}) for date field '{element_id}' in segment '{seg_id}'")
                 if not isinstance(element_value, datetime):
-                    self.add_error("element", element_id, segment = seg_id, error = f"Invalid data type ({type(element_value)}) for date field '{element_id}' in segment '{seg_id}'")
+                    self.add_error("element", name = element_id, segment = seg_id, error = f"Invalid data type ({type(element_value)}) for date field '{element_id}' in segment '{seg_id}'")
             elif element_type== "TM":
                 if max_len not in (4, 6, 7, 8):
                     self.add_error("element", name = element_id, segment = seg_id, error = f"Invalid length ({max_len}) for time field '{element_id}' in segment '{seg_id}'")
