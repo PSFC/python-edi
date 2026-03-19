@@ -26,9 +26,10 @@ Each segment has certain expected properties:
 
 Each element has certain expected features: 
 
+* `type` (Element type: `element` or `composite` if it has sub-elements)
 * `id` (Element ID)
 * `name` (Human-readable element name)
-* `req` (Whether segment is required: [M]andatory, [O]ptional)
+* `req` (Whether element is required: [M]andatory, [O]ptional, [C]onditional)
 * `data_type` (Type of segment data, defined below)
 * `data_type_ids` (If `data_type` is `ID`, this is a dict of valid IDs with descriptions)
 * `length` (Dict specifying field length)
