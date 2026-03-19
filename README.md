@@ -3,7 +3,7 @@ EDI message generator in Python. Creates &amp; validates messages according to s
 
 ## TODOs
 
-* Finish 810 definition
+* Support multiple EDI versions
 * Implement colorful exceptions
 
 ## EDI Format Definitions
